@@ -35,14 +35,14 @@ img {
     width: 320px;
     
     @media screen and (min-width: 768px) {
-        padding-left: 75px;
-        padding-right: 75px;
+        padding-left: 35px;
+        padding-right: 35px;
         width: 768px;
     }
     
     @media screen and (min-width: 1024px) {
-        padding-left: 71px;
-        padding-right: 71px;
+        padding-left: 30px;
+        padding-right: 30px;
         width: 1024px;
     }
 }
@@ -50,4 +50,7 @@ img {
 .section {
     padding-top: 60px;
     padding-bottom: 60px;
+}
+.icon-btn {
+    margin-right: 10px;
 }
