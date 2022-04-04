@@ -6,7 +6,7 @@
   "homepage": "https://github.com/mariyka-kononchuk/hometask-1",
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /parcel-project-template/"
+    "build": "parcel build src/*.html --public-url /hometask-1npm/"
   },
   "repository": {
     "type": "git",
