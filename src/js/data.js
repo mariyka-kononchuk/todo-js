@@ -5,15 +5,15 @@ export const data = [
         date: 'April 05,2022',
         category: 'Task',
         content: 'Tomatoes, bread',
-        dates:''
+        dates:'3/5/2022,10/5/2022'
     },
     {
         id: 'id-2',
         name: 'The theory of evolution',
         date: 'April 05,2022',
         category: 'Random Thought',
-        content: 'The evolution is...',
-        dates:''
+        content: 'The evolution is kfjfjfj fjfjjjf fjjfjfjf',
+        dates:'3/5/2022,10/5/2022'
     },
       {
         id: 'id-3',

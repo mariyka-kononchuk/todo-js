@@ -38,7 +38,21 @@
     line-height: 1.167;
     letter-spacing: 0.04em;
 }
+.todo-info__content {
+    width: 145px;
+}
+.todo-info__content {
+    white-space: nowrap;
+    width: 145px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
+.todo-info__content:hover {
+    white-space: normal;
+    overflow: visible;
+    width: 145px;
+}
 .todo-wrapper {
     background-color: rgb(241, 241, 252);
 }
