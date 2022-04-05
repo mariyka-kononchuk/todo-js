@@ -1,35 +1,35 @@
 {{#each this}}
-    <div class="todo-item">
+    <li class="todo-item" data-id={{id}}>
         {{!-- <div class="image-thumb">
             <a calss="image-link" href="{{largeImageURL}}"><img src="{{webformatURL}}" data-source="{{largeImageURL}}" alt="{{tags}}" loading="lazy" class="image"
                 data-id="{{id}}" /></a>
         </div> --}}
         <svg class="todo-icon" width="12" height="12">
-          <use href="./images/header-icons.svg#icon-search"></use>
+          <use href="images/icons.svg#mind"></use>
         </svg>
-        <div class="todo-wrapper">
+        <div class="todo-wrapper" >
             <p class="todo-info"><span class="todo-info__font">{{name}}</span></p>
             <p class="todo-info">{{date}}</p>
             <p class="todo-info">{{category}}</p>
             <p class="todo-info__content">{{content}}</p>
             <p class="todo-info">{{dates}}</p>
-            <button class="icon-btn">
-                <svg class="icon" width="12" height="12">
-                    <use href="./images/header-icons.svg#icon-edit"></use>
+            {{!-- <button class="icon-btn">
+                <svg class="icon" width="24" height="24">
+                    <use href="/images/edit.svg"></use>
                 </svg>
             </button>
             <button class="icon-btn">
-                <svg class="icon" width="12" height="12">
-                    <use href="./images/header-icons.svg#icon-archive"></use>
+                <svg class="icon" width="24" height="24">
+                    <use href="/images/icons.svg#icon-archive"></use>
                 </svg>
-            </button>
-            <button class="icon-btn">
-                <svg class="icon" width="12" height="12">
-                    <use href="./images/header-icons.svg#icon-delete"></use>
+            </button> --}}
+            <button  class="icon-btn-1" id="delete">
+                <svg class="icon" width="24" height="24">
+                    <use href="/images/icons.svg#icon-delete"></use>
                 </svg>
             </button>
         </div>
         
-    </div>
+    </li>
 {{/each}}
 

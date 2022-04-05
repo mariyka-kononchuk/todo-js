@@ -2,7 +2,8 @@ export default {
     form: document.querySelector('#todo-form'),
     list: document.getElementById('list'),
     archive: document.getElementById('archive'),
-    // galleryList: document.querySelector('.gallery-list'),
+    item: document.querySelector('.todo-item'),
+    deleteBtn:document.querySelector('.icon-btn-1')
     // more: document.querySelector('.load-more'),
     // imageModal: document.querySelector('.lightbox__image'),
     // divModal: document.querySelector('.js-lightbox'),

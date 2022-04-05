@@ -3,7 +3,7 @@ import dateFormat, { masks } from "dateformat";
 import todoTpl from '../templates/todo-item.hbs';
 import refs from "./refs.js";
 import { data } from "./data.js";
-const {list, form} = refs;
+const {list, form,  deleteBtn} = refs;
  
 function generateTodoList(todos) {
         const gallery = todoTpl(todos);
@@ -26,9 +26,21 @@ function generateTodoList(todos) {
 }
     
 generateTodoList(data);
-
+const item = document.querySelector('.todo-item')
+const btn = document.querySelector('.icon-btn-1')
 form.addEventListener("submit", handleSubmit);
+btn.addEventListener('click', () => { console.log(item.dataset.id) });
 
+function deleteTodoItem (item) {
+ 
+            // todoArray = JSON.parse(localStorage.getItem(key));
+
+            // const neaList = todoArray.filter(obj => obj.id !== item.id);
+
+            // localStorage.setItem(key, JSON.stringify(neaList));
+            item.remove();
+      
+}
 function handleSubmit(evt) {
   evt.preventDefault();
   const {

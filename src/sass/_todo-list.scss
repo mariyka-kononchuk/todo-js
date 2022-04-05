@@ -38,18 +38,25 @@
     line-height: 1.167;
     letter-spacing: 0.04em;
 }
+// .todo-info__content {
+//     width: 145px;
+// }
 .todo-info__content {
-    width: 145px;
-}
-.todo-info__content {
+    margin-right: 10px;
     white-space: nowrap;
-    width: 145px;
+    width: 135px;
     overflow: hidden;
     text-overflow: ellipsis;
+
+    font-size: 12px;
+    font-weight:400;
+    line-height: 1.167;
+    letter-spacing: 0.04em;
 }
 
 .todo-info__content:hover {
     white-space: normal;
+    margin-right: 0;
     overflow: visible;
     width: 145px;
 }

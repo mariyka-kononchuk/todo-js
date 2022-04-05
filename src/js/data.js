@@ -5,7 +5,7 @@ export const data = [
         date: 'April 05,2022',
         category: 'Task',
         content: 'Tomatoes, bread',
-        dates:'3/5/2022,10/5/2022'
+        dates:'3/5/2022'
     },
     {
         id: 'id-2',
