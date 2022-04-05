@@ -1,5 +1,5 @@
 export default {
-    //form: document.querySelector('#search-form'),
+    form: document.querySelector('#todo-form'),
     list: document.getElementById('list'),
     archive: document.getElementById('archive'),
     // galleryList: document.querySelector('.gallery-list'),

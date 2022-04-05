@@ -1,33 +1,11 @@
+import { v4 as uuidv4 } from 'uuid';
+import dateFormat, { masks } from "dateformat";
 import todoTpl from '../templates/todo-item.hbs';
 import refs from "./refs.js";
-const {list} = refs;
+import { data } from "./data.js";
+const {list, form} = refs;
  
-const data = [
-    {
-        id: 'id-1',
-        name: 'Shopping list',
-        date: '04-04-2022',
-        category: 'Task',
-        content: 'Tomatoes, bread',
-        dates:''
-    },
-    {
-        id: 'id-2',
-        name: 'The theory of evolution',
-        date: '04-04-2022',
-        category: 'Random Thought',
-        content: 'The evolution is...',
-        dates:''
-    },
-      {
-        id: 'id-3',
-        name: 'New feature',
-        date: '04-04-2022',
-        category: 'Ides',
-        content: 'Implement new...',
-        dates:'3/5/2022,10/5/2022'
-    }
-]
+
 function generateTodoList(todos) {
         const gallery = todoTpl(todos);
         
@@ -49,3 +27,33 @@ function generateTodoList(todos) {
 }
     
 generateTodoList(data);
+
+
+form.addEventListener("submit", handleSubmit);
+
+function handleSubmit(evt) {
+  evt.preventDefault();
+  const {
+    elements: { name, content, category }
+  } = evt.currentTarget;
+
+  if (name.value === "" || content.value === "") {
+    return console.log("Please fill in all the fields!");
+    }
+    
+    const newTodo = {
+      id: uuidv4(),
+      date: dateFormat(new Date(), "mmmm dS, yyyy"),
+      name: name.value,
+      content: content.value,
+      category: category.value
+    }
+    
+  data.push(newTodo);
+
+  list.innerHTML = "";
+
+  generateTodoList(data);
+    
+  evt.currentTarget.reset();
+}
