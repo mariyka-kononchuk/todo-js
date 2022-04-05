@@ -5,7 +5,6 @@ import refs from "./refs.js";
 import { data } from "./data.js";
 const {list, form} = refs;
  
-
 function generateTodoList(todos) {
         const gallery = todoTpl(todos);
         
@@ -28,7 +27,6 @@ function generateTodoList(todos) {
     
 generateTodoList(data);
 
-
 form.addEventListener("submit", handleSubmit);
 
 function handleSubmit(evt) {
@@ -41,13 +39,16 @@ function handleSubmit(evt) {
     return console.log("Please fill in all the fields!");
     }
     
-    const newTodo = {
-      id: uuidv4(),
-      date: dateFormat(new Date(), "mmmm dS, yyyy"),
-      name: name.value,
-      content: content.value,
-      category: category.value
-    }
+  const dates = content.value.match(/\d{2}([\/.-])\d{2}\1\d{4}/g)
+ 
+  const newTodo = {
+    id: uuidv4(),
+    date: dateFormat(new Date(), "mmmm dS, yyyy"),
+    name: name.value,
+    content: content.value,
+    category: category.value,
+    dates:dates
+  }
     
   data.push(newTodo);
 
