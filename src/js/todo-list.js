@@ -5,7 +5,9 @@ import todoTpl from '../templates/todo-item.hbs';
 import refs from "./refs.js";
 import { data } from "./data.js";
 const {list, form} = refs;
- 
+
+const archiveData = [];
+
 function generateTodoList(data) {
  const markup = todoTpl(data);
   // const markup = datas
@@ -87,17 +89,13 @@ function editTodo (e) {
  
       
 }
+
 function archiveTodo (e) {
- const idTodo = e.currentTarget.parentNode.parentNode.parentNode.id
-            // todoArray = JSON.parse(localStorage.getItem(key));
-
-            // const neaList = todoArray.filter(obj => obj.id !== item.id);
-
-            // localStorage.setItem(key, JSON.stringify(neaList));
-            //item.remove();
+  const idTodo = e.currentTarget.parentNode.parentNode.parentNode.id
+  const todoArchive = data.filter(item => item.id === idTodo);
   console.log('archive', idTodo);
- 
-      
+  archiveData.push(todoArchive);
+  console.log('archive', archiveData)
 }
 
 function handleSubmit(evt) {
