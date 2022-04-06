@@ -9,7 +9,8 @@ const {list, form} = refs;
 const archiveData = [];
 
 function generateTodoList(data) {
- const markup = todoTpl(data);
+  const activeTodos = data.filter((todo => todo.status === 'active'))
+ const markup = todoTpl(activeTodos);
   // const markup = datas
   //   .map((data) =>
   //     `<li class="todo-item" id=${data.id}>
@@ -86,16 +87,25 @@ function editTodo (e) {
  const idTodo = e.currentTarget.parentNode.parentNode.parentNode.id
       
   console.log('edit',idTodo);
- 
-      
+//  const tasks = [ { id: 1, done: false }, { id: 2, done: false } ]
+// const completed_task = { id: 1, done: true }
+
+// const markCompleted = (tasks, task) => {
+//   const index = tasks.findIndex(t => t.id === task.id);
+//   tasks.splice(index, 1);
+//   tasks.push(task);
+//   return tasks;
 }
+      
+
 
 function archiveTodo (e) {
-  const idTodo = e.currentTarget.parentNode.parentNode.parentNode.id
-  const todoArchive = data.filter(item => item.id === idTodo);
-  console.log('archive', idTodo);
-  archiveData.push(todoArchive);
-  console.log('archive', archiveData)
+  const idTodo = e.currentTarget.parentNode.parentNode.parentNode.id;
+  const index = data.findIndex(item => item.id === idTodo);
+  data[index].status = "archived";
+  generateTodoList(data);
+  console.log(data)
+//  var result = foo.map(el => el.bar == 1 ? {...el, baz: [11,22,33]} : el)
 }
 
 function handleSubmit(evt) {
