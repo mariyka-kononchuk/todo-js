@@ -156,11 +156,40 @@ function handleSubmit(evt) {
   evt.currentTarget.reset();
 }
 
-generateArchiveList(archiveData);
+generateArchiveList(data);
 
 function generateArchiveList(data) {
   //const archiveTodos = data.filter((todo => todo.status === 'archived'));
+  const news = data.map(e => { return { category: e.category, status: e.status } })
+  console.log('свойства',
+    data.filter(item => item.status === 'active'))
+  console.log('вариант',
+    data.map(e => { return { category: e.category, status: e.status } }))
+  console.log('news',news.reduce((total,x) => (x.category==='Idea'&& x.status==='active' ? total+1 : total), 0))
+  
+  let count = 0;
 
+  function fieldByIndex(products, field){
+ return products.reduce((acc,curr) => {
+   const key = curr[field];
+   const value = acc[key] ? [...acc[key], curr] : [curr];
+   acc[key] = value;
+   console.log('acc',acc)
+   return acc;
+ }, {});
+}
+
+fieldByIndex(news, 'category')
+     
+  console.log('свойства',
+    data.filter(item => item.status === 'active')
+  .map(e => { return { category: e.category, totalActive: e.category.reduce((a,b) => a + b, 0) } }))
+ 
+   const newArchive = {
+    category: content.value,
+    activeTotal: category.value,
+    archivedTotal:dates
+  }
   const markup = archiveTpl(data);
   archive.innerHTML = "";
   archive.insertAdjacentHTML("beforeend", markup);

@@ -12,7 +12,7 @@ export const data = [
         id: 'id-2',
         name: 'The theory of evolution',
         date: 'April 05,2022',
-        category: 'Random Thought',
+        category: 'Task',
         content: 'The evolution is kfjfjfj fjfjjjf fjjfjfjf',
         dates: '3/5/2022,10/5/2022',
         status:'active'
@@ -25,5 +25,32 @@ export const data = [
         content: 'Implement new...',
         dates: '3/5/2022,10/5/2022',
         status:'active'
+    },
+       {
+        id: 'id-4',
+        name: 'New feature',
+        date: 'April 05,2022',
+        category: 'Idea',
+        content: 'Implement new...',
+        dates: '3/5/2022,10/5/2022',
+        status:'archived'
+    },
+        {
+        id: 'id-5',
+        name: 'New feature',
+        date: 'April 05,2022',
+        category: 'Idea',
+        content: 'Implement new...',
+        dates: '3/5/2022,10/5/2022',
+        status:'archived'
+    },
+         {
+        id: 'id-6',
+        name: 'New feature',
+        date: 'April 05,2022',
+        category: 'Idea',
+        content: 'Implement new...',
+        dates: '3/5/2022,10/5/2022',
+        status:'archived'
     }
 ]
