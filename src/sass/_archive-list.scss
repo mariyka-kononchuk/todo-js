@@ -1,0 +1,46 @@
+.archive-wrapper {
+    display: flex;
+    margin-bottom: 20px;
+    padding-left: 25px;
+    
+    font-size: 14px;
+    font-weight:600;
+    line-height: 1.167;
+    letter-spacing: 0.04em;
+    
+    background-color: rgb(165, 163, 163);
+    color:white;
+    border-radius: 6px;
+}
+.archive-info__wrapper {
+    display: flex;
+    margin-left: 200px;
+}
+.archive-item {
+    display: flex;
+    padding-left: 25px;
+    padding-right: 25px;
+    
+}
+.archive-info {
+    display: block;
+    width: 145px;
+
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.167;
+    letter-spacing: 0.04em;
+  
+}
+.todo-archive {
+    
+}
+.archive-item {
+    margin-bottom: 20px;
+    background-color: rgb(241, 241, 252);
+}
+
+.archive-info__font {
+    font-weight: 500;
+}
+

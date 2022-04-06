@@ -1,6 +1,6 @@
 .header-wrapper {
     display: flex;
-    
+    margin-bottom: 20px;
     padding-left: 25px;
 
     font-size: 14px;
@@ -27,10 +27,13 @@
     padding-left: 25px;
     padding-right: 25px;
 }
-
+.todo-item {
+    margin-bottom: 20px;
+}
 .todo-info{
     display:block;
     width: 145px;
+    
     //margin-right: 50px;
 
     font-size: 12px;
@@ -38,9 +41,9 @@
     line-height: 1.167;
     letter-spacing: 0.04em;
 }
-// .todo-info__content {
-//     width: 145px;
-// }
+.todo-info__font{
+    font-weight:500;
+}
 .todo-info__content {
     margin-right: 10px;
     white-space: nowrap;

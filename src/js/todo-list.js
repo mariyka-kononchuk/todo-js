@@ -2,11 +2,29 @@ import { v4 as uuidv4 } from 'uuid';
 import Notiflix from "notiflix";
 import dateFormat, { masks } from "dateformat";
 import todoTpl from '../templates/todo-item.hbs';
+import archiveTpl from '../templates/archive-item.hbs';
 import refs from "./refs.js";
 import { data } from "./data.js";
 const {list, form} = refs;
 
-const archiveData = [];
+const archiveData = [
+   {
+      category: 'Task',
+      activeTotal: '',
+      archivedTotal: '',
+        
+    },
+    {
+      category: 'Random Thought',
+      activeTotal: '',
+      archivedTotal: '',
+    },
+      {
+        category: 'Idea',
+        activeTotal: '2',
+        archivedTotal: '2',
+    }
+];
 
 function generateTodoList(data) {
   const activeTodos = data.filter((todo => todo.status === 'active'))
@@ -138,3 +156,12 @@ function handleSubmit(evt) {
   evt.currentTarget.reset();
 }
 
+generateArchiveList(archiveData);
+
+function generateArchiveList(data) {
+  //const archiveTodos = data.filter((todo => todo.status === 'archived'));
+
+  const markup = archiveTpl(data);
+  archive.innerHTML = "";
+  archive.insertAdjacentHTML("beforeend", markup);
+};
