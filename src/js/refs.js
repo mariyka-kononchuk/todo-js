@@ -3,7 +3,7 @@ export default {
     list: document.getElementById('list'),
     archive: document.getElementById('archive'),
     item: document.querySelector('.todo-item'),
-    deleteBtn:document.querySelector('.icon-btn-1')
+    
     // more: document.querySelector('.load-more'),
     // imageModal: document.querySelector('.lightbox__image'),
     // divModal: document.querySelector('.js-lightbox'),

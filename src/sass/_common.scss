@@ -52,11 +52,25 @@ img {
     padding-bottom: 60px;
 }
 .icon-btn {
-    margin-right: 10px;
+    margin-right: 5px;
     cursor: pointer;
     // border:none;
+    border:none;
+   // outline: none;
+   background-color: transparent;
+}
+
+.icon-btn-archive {
+    margin-right: 10px;
+    cursor: pointer;
+    
 }
 
 .icon{
     fill: green
+}
+
+.button-wrapper {
+    display: flex;
+    margin-left: 70px;
 }
