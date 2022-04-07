@@ -161,16 +161,14 @@ function handleSubmit(evt) {
 
 const categoryName = ['Task', 'Idea', 'Random Thought'];
 
-const totalData = [];
-generateTotalData(data, categoryName);
 
-console.log('total', totalData);
+
+
 
 function generateTotalData(data,categoryName) {
-  
+  const totalData = [];
   const newArray = data.map(e => { return { category: e.category, status: e.status } });
   console.log('result', newArray)
-  
   for (const name of categoryName) {
     let totalActive = 0;
     let totalArchived = 0;
@@ -182,7 +180,12 @@ function generateTotalData(data,categoryName) {
         totalArchived++;
       }
     }
-
+    if (totalActive === 0) {
+      totalActive = ''
+    }
+    if (totalArchived === 0) {
+      totalArchived = ''
+    }
     const newTotalData = {
       category: name,
       active: totalActive,
@@ -190,10 +193,11 @@ function generateTotalData(data,categoryName) {
     }
     totalData.push(newTotalData)
   }
-  return;
+  return totalData;
 }
 
 
+generateArchivedList(data)
 
 function generateArchivedList(data) {
 
@@ -206,28 +210,35 @@ function generateArchivedList(data) {
   // console.log('news',news.reduce((total,x) => (x.category==='Idea'&& x.status==='active' ? total+1 : total), 0))
   
  
-  function fieldByIndex(products, field){
- return products.reduce((acc,curr) => {
-   const key = curr[field];
-   const value = acc[key] ? [...acc[key], curr] : [curr];
-   acc[key] = value;
-   console.log('acc',acc)
-   return acc;
- }, {});
-}
+//   function fieldByIndex(products, field){
+//  return products.reduce((acc,curr) => {
+//    const key = curr[field];
+//    const value = acc[key] ? [...acc[key], curr] : [curr];
+//    acc[key] = value;
+//    console.log('acc',acc)
+//    return acc;
+//  }, {});
+// }
 
-fieldByIndex(news, 'category')
+// fieldByIndex(news, 'category')
      
-  console.log('свойства',
-    data.filter(item => item.status === 'active')
-  .map(e => { return { category: e.category, totalActive: e.category.reduce((a,b) => a + b, 0) } }))
+//   console.log('свойства',
+//     data.filter(item => item.status === 'active')
+//   .map(e => { return { category: e.category, totalActive: e.category.reduce((a,b) => a + b, 0) } }))
  
-   const newArchive = {
-    category: content.value,
-    activeTotal: category.value,
-    archivedTotal:dates
+//    const newArchive = {
+//     category: content.value,
+//     activeTotal: category.value,
+//     archivedTotal:dates
+//   }
+  
+  const totalData = generateTotalData(data, categoryName);
+  const index = totalData.findIndex(item => item.active === '' && item.archived === '');
+  if (index !== -1) {
+    totalData.splice(index, 1);
   }
-  const markup = archiveTpl(data);
+  console.log('total', totalData)
+  const markup = archiveTpl(totalData);
   archive.innerHTML = "";
   archive.insertAdjacentHTML("beforeend", markup);
 };
