@@ -39,7 +39,7 @@ export const data = [
         id: 'id-5',
         name: 'New feature',
         date: 'April 05,2022',
-        category: 'Idea',
+        category: 'Random Thought',
         content: 'Implement new...',
         dates: '3/5/2022,10/5/2022',
         status:'archived'

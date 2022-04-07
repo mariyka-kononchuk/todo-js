@@ -156,19 +156,56 @@ function handleSubmit(evt) {
   evt.currentTarget.reset();
 }
 
-generateArchiveList(data);
+//generateArchivedList(data);
 
-function generateArchiveList(data) {
-  //const archiveTodos = data.filter((todo => todo.status === 'archived'));
-  const news = data.map(e => { return { category: e.category, status: e.status } })
-  console.log('свойства',
-    data.filter(item => item.status === 'active'))
-  console.log('вариант',
-    data.map(e => { return { category: e.category, status: e.status } }))
-  console.log('news',news.reduce((total,x) => (x.category==='Idea'&& x.status==='active' ? total+1 : total), 0))
+
+const categoryName = ['Task', 'Idea', 'Random Thought'];
+
+const totalData = [];
+generateTotalData(data, categoryName);
+
+console.log('total', totalData);
+
+function generateTotalData(data,categoryName) {
   
-  let count = 0;
+  const newArray = data.map(e => { return { category: e.category, status: e.status } });
+  console.log('result', newArray)
+  
+  for (const name of categoryName) {
+    let totalActive = 0;
+    let totalArchived = 0;
+    for (const item of newArray) {
+      if (item.category === name && item.status === 'active') {
+        totalActive++;
+      }
+      if (item.category === name && item.status === 'archived') {
+        totalArchived++;
+      }
+    }
 
+    const newTotalData = {
+      category: name,
+      active: totalActive,
+      archived: totalArchived
+    }
+    totalData.push(newTotalData)
+  }
+  return;
+}
+
+
+
+function generateArchivedList(data) {
+
+  //const archiveTodos = data.filter((todo => todo.status === 'archived'));
+  // const news = data.map(e => { return { category: e.category, status: e.status } })
+  // console.log('свойства',
+  //   data.filter(item => item.status === 'active'))
+  // console.log('вариант',
+  //   data.map(e => { return { category: e.category, status: e.status } }))
+  // console.log('news',news.reduce((total,x) => (x.category==='Idea'&& x.status==='active' ? total+1 : total), 0))
+  
+ 
   function fieldByIndex(products, field){
  return products.reduce((acc,curr) => {
    const key = curr[field];
