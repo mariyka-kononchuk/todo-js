@@ -28,25 +28,25 @@ export const data = [
     },
        {
         id: 'id-4',
-        name: 'New feature',
+        name: 'New feature1',
         date: 'April 05,2022',
-        category: 'Idea',
+        category: 'Task',
         content: 'Implement new...',
-        dates: '3/5/2022,10/5/2022',
+        dates: '',
         status:'archived'
     },
         {
         id: 'id-5',
-        name: 'New feature',
+        name: 'New feature2',
         date: 'April 05,2022',
         category: 'Idea',
         content: 'Implement new...',
-        dates: '3/5/2022,10/5/2022',
+        dates: '10/5/2022',
         status:'archived'
     },
          {
         id: 'id-6',
-        name: 'New feature',
+        name: 'New feature3',
         date: 'April 05,2022',
         category: 'Idea',
         content: 'Implement new...',

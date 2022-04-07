@@ -19,7 +19,7 @@ body.modal-open {
     overflow: hidden;
 }
 
-.todo__lightbox {
+.archive__lightbox {
     @media screen and (min-width: 320px) {
         position: fixed;
         top: 0;
@@ -40,14 +40,14 @@ body.modal-open {
     }
 }
 
-.todo__modal {
+.archive__modal {
     position: absolute;
 
     width: 280px;
     min-height: 200px;
 
     padding: 25px 20px;
-    top: 150px;
+    top: 50px;
     left: 50%;
     transform: translate(-50%, 0);
 
@@ -59,19 +59,19 @@ body.modal-open {
     border-radius: 5px;
 
     @media screen and (min-width: 768px) {
-        padding: 20px 20px;
-        width: 750px;
-        min-height: 120px;
+        padding: 40px 40px;
+        width: 700px;
+        min-height: 800px;
     }
 
     @media screen and (min-width: 1024px) {
-        width: 750px;
-        min-height: 120px;
+        width: 1000px;
+        min-height: 800px;
     }
 }
 
 
-.todo__modal--close {
+.archive__modal--close {
     position: absolute;
     top: 5px;
     right: 5px;

@@ -1,33 +1,16 @@
 import { v4 as uuidv4 } from 'uuid';
 import Notiflix from "notiflix";
 import dateFormat, { masks } from "dateformat";
-import todoTpl from '../templates/todo-item.hbs';
-import archiveTpl from '../templates/archive-item.hbs';
+import todoTpl from '../templates/todo.hbs';
+import summaryTpl from '../templates/summary.hbs';
+import archiveTpl from '../templates/archive.hbs';
 import refs from "./refs.js";
 import { data } from "./data.js";
-const {list, form, summary} = refs;
+const {todoList, archiveList, form, summary} = refs;
 const categoryName = ['Task', 'Idea', 'Random Thought'];
-const archiveData = [
-   {
-      category: 'Task',
-      activeTotal: '',
-      archivedTotal: '',
-        
-    },
-    {
-      category: 'Random Thought',
-      activeTotal: '',
-      archivedTotal: '',
-    },
-      {
-        category: 'Idea',
-        activeTotal: '2',
-        archivedTotal: '2',
-    }
-];
 
-function generateTodoList(data, status) {
-const activeTodos = data.filter((todo => todo.status === status))
+function generateTodoList(data) {
+const activeTodos = data.filter((todo => todo.status === 'active'))
 const markup = todoTpl(activeTodos);
   // const markup = activeTodos
   //   .map((data) =>
@@ -59,14 +42,14 @@ const markup = todoTpl(activeTodos);
   //       </div>
   //   </li>`)
   // .join("");
-   list.innerHTML = "";
+   todoList.innerHTML = "";
         //если ничего не нашли по запросу (получили пустой массив)
         if (data.length === 0) {
             return Notiflix.Notify.failure('Sorry, there are no tasks. Please add new task.');
         }
        
         //вставляем шаблон в разметку с заполенными параметрами
-    list.insertAdjacentHTML("beforeend", markup);
+    todoList.insertAdjacentHTML("beforeend", markup);
     
       const todos = document.querySelectorAll('.todo-item')
       for (let todo of todos) {
@@ -77,14 +60,31 @@ const markup = todoTpl(activeTodos);
         editButton.addEventListener('click', editTodo);
         archiveButton.addEventListener('click', archiveTodo);
       }
-    generateArchivedList(data);
+    generateSummaryData(data);
+}
+
+export function generateArchiveList(data) {
+  const archivedTodos = data.filter((todo => todo.status === 'archived'));
+  console.log('archive',archivedTodos)
+  const markup = archiveTpl(archivedTodos);
+  archiveList.innerHTML = "";
+    if (data.length === 0) {
+      return Notiflix.Notify.failure('Sorry, there are no tasks. Please add new task.');
+      }
+  archiveList.insertAdjacentHTML("beforeend", markup);
+  // const archives = document.querySelectorAll('.archive-item')
+        // for (let archive of archives) {
+        //   const deleteButton = archive.querySelector('.icon-btn__delete');
+          
+        //   deleteButton.addEventListener('click', deleteTodo);
+          
+        // }
+   
 }
     
 generateTodoList(data, 'active');
-
 form.addEventListener("submit", handleSubmit);
 
-// ('click',(e) => e.target.parentNode.remove())
 
 function deleteTodo (e) {
   const idTodo = e.currentTarget.parentNode.parentNode.parentNode.id
@@ -146,10 +146,10 @@ function handleSubmit(evt) {
     
   data.push(newTodo);
 
-  list.innerHTML = "";
+  todoList.innerHTML = "";
 
   generateTodoList(data);
-  generateArchivedList(data);
+  generateSummaryData(data);
   evt.currentTarget.reset();
 }
 
@@ -196,7 +196,7 @@ function generateTotalData(data,categoryName) {
 
 
 
-function generateArchivedList(data) {
+function generateSummaryData(data) {
 
   //const archiveTodos = data.filter((todo => todo.status === 'archived'));
   // const news = data.map(e => { return { category: e.category, status: e.status } })
@@ -235,7 +235,7 @@ function generateArchivedList(data) {
     totalData.splice(index, 1);
   }
   console.log('total', totalData)
-  const markup = archiveTpl(totalData);
+  const markup = summaryTpl(totalData);
   summary.innerHTML = "";
   summary.insertAdjacentHTML("beforeend", markup);
 };
