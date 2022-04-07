@@ -5,8 +5,8 @@ import todoTpl from '../templates/todo-item.hbs';
 import archiveTpl from '../templates/archive-item.hbs';
 import refs from "./refs.js";
 import { data } from "./data.js";
-const {list, form} = refs;
-
+const {list, form, addTodoButton} = refs;
+const categoryName = ['Task', 'Idea', 'Random Thought'];
 const archiveData = [
    {
       category: 'Task',
@@ -26,14 +26,19 @@ const archiveData = [
     }
 ];
 
+// addTodoButton.addEventListener('click', () => {
+//   addTodoButton.classList.add('is-hidden');
+//   form.classList.remove('is-hidden')
+// })
+
 function generateTodoList(data) {
-  const activeTodos = data.filter((todo => todo.status === 'active'))
+const activeTodos = data.filter((todo => todo.status === 'active'))
  const markup = todoTpl(activeTodos);
-  // const markup = datas
+  // const markup = activeTodos
   //   .map((data) =>
   //     `<li class="todo-item" id=${data.id}>
   //       <svg class="todo-icon" width="24" height="24">
-  //         <use href="../images/mind.svg"></use>
+  //         <use href="./images/iconsNew.svg#icon-delete"></use>
   //       </svg>
   //       <div class="todo-wrapper" >
   //           <p class="todo-info"><span class="todo-info__font">${data.name}</span></p>
@@ -43,17 +48,17 @@ function generateTodoList(data) {
   //           <p class="todo-info">${data.dates}</p>
   //           <button class="icon-btn__edit">
   //               <svg class="icon" width="24" height="24">
-  //                   <use href="images/icons.svg#icon-archive"></use>
+  //                   <use href="./images/iconsNew.svg#icon-delete"></use>
   //               </svg>
   //           </button>
   //           <button class="icon-btn__archive">
   //               <svg class="icon" width="24" height="24">
-  //                   <use href="images/icons.svg#icon-archive"></use>
+  //                   <use href="./images/iconsNew.svg#icon-delete"></use>
   //               </svg>
   //           </button>
   //           <button  class="icon-btn__delete" id="delete">
   //               <svg class="icon" width="24" height="24">
-  //                   <use href="images/icons.svg#icon-delete"></use>
+  //                   <use href="./images/iconsNew.svg#icon-delete"></use>
   //               </svg>
   //           </button>
   //       </div>
@@ -82,7 +87,7 @@ function generateTodoList(data) {
         editButton.addEventListener('click', editTodo);
         archiveButton.addEventListener('click', archiveTodo);
       }
-    
+    generateArchivedList(data);
 }
     
 generateTodoList(data);
@@ -144,7 +149,8 @@ function handleSubmit(evt) {
     name: name.value,
     content: content.value,
     category: category.value,
-    dates:dates
+    dates: dates,
+    status:'active'
   }
     
   data.push(newTodo);
@@ -152,14 +158,16 @@ function handleSubmit(evt) {
   list.innerHTML = "";
 
   generateTodoList(data);
-    
+  generateArchivedList(data);
   evt.currentTarget.reset();
+  addTodoButton.classList.remove('is-hidden');
+  form.classList.add('is-hidden');
 }
 
 //generateArchivedList(data);
 
 
-const categoryName = ['Task', 'Idea', 'Random Thought'];
+
 
 
 
@@ -197,7 +205,7 @@ function generateTotalData(data,categoryName) {
 }
 
 
-generateArchivedList(data)
+
 
 function generateArchivedList(data) {
 

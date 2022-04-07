@@ -3,8 +3,8 @@ export default {
     list: document.getElementById('list'),
     archive: document.getElementById('archive'),
     item: document.querySelector('.todo-item'),
-    
-    // more: document.querySelector('.load-more'),
+    addTodoButton:document.querySelector('.add-todo-btn'),
+    submitButton: document.querySelector('.submit-btn'),
     // imageModal: document.querySelector('.lightbox__image'),
     // divModal: document.querySelector('.js-lightbox'),
     // buttonModal: document.querySelector('.lightbox__button'),
