@@ -1,5 +1,22 @@
-* {
+html {
     box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #ffffff;
+
+    margin: 0;
+}
+
+body.modal-open {
+    overflow: hidden;
 }
 
 * {
@@ -14,16 +31,14 @@ img {
     height: auto;
 }
 
-// * body {
-//     background-color: powderblue;
-// }
 
-*ul{
+
+ul{
     margin: 0;
     padding: 0;
 }
 
-*li {
+li {
     list-style: none;
 }
 .container {
@@ -58,6 +73,9 @@ img {
     border:none;
    // outline: none;
    background-color: transparent;
+&:hover {
+    fill: #ff6b01;
+}
 }
 
 .icon-btn-archive {
@@ -74,3 +92,4 @@ img {
     display: flex;
     margin-left: 70px;
 }
+

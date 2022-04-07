@@ -18,7 +18,9 @@
     width: 145px;
   
 }
-
+.todo-form {
+    padding-top: 20px;
+}
 .todo-list{
     margin-bottom: 20px;
 }
@@ -80,3 +82,12 @@
     opacity: 0;
     pointer-events: none;
 }
+
+
+
+// .icon-btn__edit {
+//     fill:#aa6a01;
+//     &:hover {
+//         fill: #ff6b01;
+//     }
+// }

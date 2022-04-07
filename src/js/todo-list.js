@@ -5,7 +5,7 @@ import todoTpl from '../templates/todo-item.hbs';
 import archiveTpl from '../templates/archive-item.hbs';
 import refs from "./refs.js";
 import { data } from "./data.js";
-const {list, form, addTodoButton} = refs;
+const {list, form, summary} = refs;
 const categoryName = ['Task', 'Idea', 'Random Thought'];
 const archiveData = [
    {
@@ -26,14 +26,9 @@ const archiveData = [
     }
 ];
 
-// addTodoButton.addEventListener('click', () => {
-//   addTodoButton.classList.add('is-hidden');
-//   form.classList.remove('is-hidden')
-// })
-
-function generateTodoList(data) {
-const activeTodos = data.filter((todo => todo.status === 'active'))
- const markup = todoTpl(activeTodos);
+function generateTodoList(data, status) {
+const activeTodos = data.filter((todo => todo.status === status))
+const markup = todoTpl(activeTodos);
   // const markup = activeTodos
   //   .map((data) =>
   //     `<li class="todo-item" id=${data.id}>
@@ -71,12 +66,7 @@ const activeTodos = data.filter((todo => todo.status === 'active'))
         }
        
         //вставляем шаблон в разметку с заполенными параметрами
-        list.insertAdjacentHTML("beforeend", markup);
-        //КЛАССИЧЕСКАЯ МОДАЛКА: переход между картинками реализован с помощью индекса массива изображений
-        //galleryList.addEventListener('click', onOpenModal);
-        //МОДАЛКА ИЗ БИБЛИОТЕКИ Simplelightbox
-        //openSimpleLightboxModal();
-        //плавная прокрутка
+    list.insertAdjacentHTML("beforeend", markup);
     
       const todos = document.querySelectorAll('.todo-item')
       for (let todo of todos) {
@@ -90,7 +80,8 @@ const activeTodos = data.filter((todo => todo.status === 'active'))
     generateArchivedList(data);
 }
     
-generateTodoList(data);
+generateTodoList(data, 'active');
+
 form.addEventListener("submit", handleSubmit);
 
 // ('click',(e) => e.target.parentNode.remove())
@@ -160,8 +151,6 @@ function handleSubmit(evt) {
   generateTodoList(data);
   generateArchivedList(data);
   evt.currentTarget.reset();
-  addTodoButton.classList.remove('is-hidden');
-  form.classList.add('is-hidden');
 }
 
 //generateArchivedList(data);
@@ -247,6 +236,6 @@ function generateArchivedList(data) {
   }
   console.log('total', totalData)
   const markup = archiveTpl(totalData);
-  archive.innerHTML = "";
-  archive.insertAdjacentHTML("beforeend", markup);
+  summary.innerHTML = "";
+  summary.insertAdjacentHTML("beforeend", markup);
 };

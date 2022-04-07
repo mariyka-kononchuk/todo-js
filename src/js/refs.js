@@ -1,8 +1,9 @@
 export default {
     form: document.querySelector('#todo-form'),
     list: document.getElementById('list'),
-    archive: document.getElementById('archive'),
     item: document.querySelector('.todo-item'),
+    summary:document.querySelector('.summary'),
+    archiveButton: document.getElementById('archive'),
     addTodoButton:document.querySelector('.add-todo-btn'),
     submitButton: document.querySelector('.submit-btn'),
     // imageModal: document.querySelector('.lightbox__image'),
