@@ -58,7 +58,7 @@ const markup = todoTpl(activeTodos);
         const archiveButton = todo.querySelector('.icon-btn__archive');
         deleteButton.addEventListener('click', deleteTodo);
         editButton.addEventListener('click', editTodo);
-        archiveButton.addEventListener('click', (e)=> archiveTodo(e, 'archived'));
+        archiveButton.addEventListener('click', (e)=> changeStatusTodo(e, 'archived'));
       }
     createSummaryData(data);
 }
@@ -74,7 +74,7 @@ export function createArchiveList(data) {
   const allArchivedTodos = document.querySelectorAll('.archive-item')
   for (let archivedTodo of allArchivedTodos) {
       const unpackButton = archivedTodo.querySelector('.archive-btn__unpack');
-      unpackButton.addEventListener('click', (e)=> archiveTodo(e, 'active'));
+      unpackButton.addEventListener('click', (e)=> changeStatusTodo(e, 'active'));
     }
 }
     
@@ -107,7 +107,7 @@ function editTodo (e) {
 //   return tasks;
 }
  
-function archiveTodo (e, newStatus) {
+function changeStatusTodo (e, newStatus) {
   const idTodo = e.currentTarget.parentNode.parentNode.parentNode.id;
   const index = data.findIndex(item => item.id === idTodo);
   data[index].status = newStatus;
