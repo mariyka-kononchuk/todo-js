@@ -1,7 +1,6 @@
 import refs from "./refs.js";
 const { addTodoButton, submitButton} = refs;
 const todoLightBox = document.querySelector('.todo__lightbox');
-const archiveLightBox = document.querySelector('.todo__lightbox');
 const btnTeamModalClose = document.querySelector('.todo__modal--close');
 const body = document.querySelector('body');
 

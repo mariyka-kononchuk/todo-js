@@ -1,0 +1,20 @@
+<!-- EDIT-MODAL -->
+<div class="edit__lightbox is-hidden">
+    <div class="edit__modal">
+            <button class="edit__modal--close">
+                <svg class="close-svg" width="28" height="28">
+                    <use href="./images/icons.svg#icon-close"></use>
+                </svg>
+            </button>
+            <form class="edit-form" id="edit-form" autocomplete="off">
+                <input type="text" name="name"  id="name"/>
+                <select name="category">
+                    <option value="Task">Task</option>
+                    <option value="Random Thought">Random Thought</option>
+                    <option value="Idea">Idea</option>
+                </select>
+                <input type="text" name="content" id="content" />
+                <button type="submit" class="create save-changes-btn">Save changes</button>
+            </form>
+    </div>
+</div>

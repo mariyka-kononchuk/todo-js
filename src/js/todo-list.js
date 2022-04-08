@@ -6,58 +6,25 @@ import summaryTpl from '../templates/summary.hbs';
 import archiveTpl from '../templates/archive.hbs';
 import refs from "./refs.js";
 import { data } from "./data.js";
+import { onEditModalOpen } from './edit-modal';
 const {todoList, archiveList, form, summary} = refs;
 const categoryName = ['Task', 'Idea', 'Random Thought'];
 
 function createTodoList(data) {
 const activeTodos = data.filter((todo => todo.status === 'active'))
 const markup = todoTpl(activeTodos);
-  // const markup = activeTodos
-  //   .map((data) =>
-  //     `<li class="todo-item" id=${data.id}>
-  //       <svg class="todo-icon" width="24" height="24">
-  //         <use href="./images/iconsNew.svg#icon-delete"></use>
-  //       </svg>
-  //       <div class="todo-wrapper" >
-  //           <p class="todo-info"><span class="todo-info__font">${data.name}</span></p>
-  //           <p class="todo-info">${data.date}</p>
-  //           <p class="todo-info">${data.category}</p>
-  //           <p class="todo-info__content">${data.content}</p>
-  //           <p class="todo-info">${data.dates}</p>
-  //           <button class="icon-btn__edit">
-  //               <svg class="icon" width="24" height="24">
-  //                   <use href="./images/iconsNew.svg#icon-delete"></use>
-  //               </svg>
-  //           </button>
-  //           <button class="icon-btn__archive">
-  //               <svg class="icon" width="24" height="24">
-  //                   <use href="./images/iconsNew.svg#icon-delete"></use>
-  //               </svg>
-  //           </button>
-  //           <button  class="icon-btn__delete" id="delete">
-  //               <svg class="icon" width="24" height="24">
-  //                   <use href="./images/iconsNew.svg#icon-delete"></use>
-  //               </svg>
-  //           </button>
-  //       </div>
-  //   </li>`)
-  // .join("");
-   todoList.innerHTML = "";
-        //если ничего не нашли по запросу (получили пустой массив)
+  todoList.innerHTML = "";
         if (data.length === 0) {
             return Notiflix.Notify.failure('Sorry, there are no tasks. Please add new task.');
         }
-       
-        //вставляем шаблон в разметку с заполенными параметрами
-    todoList.insertAdjacentHTML("beforeend", markup);
-    
+  todoList.insertAdjacentHTML("beforeend", markup);
   const todos = document.querySelectorAll('.todo-item')
       for (let todo of todos) {
         const deleteButton = todo.querySelector('.icon-btn__delete');
         const editButton = todo.querySelector('.icon-btn__edit');
         const archiveButton = todo.querySelector('.icon-btn__archive');
         deleteButton.addEventListener('click', deleteTodo);
-        editButton.addEventListener('click', editTodo);
+        editButton.addEventListener('click', (e)=>onEditModalOpen(e));
         archiveButton.addEventListener('click', (e)=> changeStatusTodo(e, 'archived'));
       }
     createSummaryData(data);
@@ -79,7 +46,8 @@ export function createArchiveList(data) {
 }
     
 createTodoList(data, 'active');
-form.addEventListener("submit", handleSubmit);
+
+form.addEventListener("submit", newTodo);
 
 
 function deleteTodo (e) {
@@ -93,10 +61,45 @@ function deleteTodo (e) {
   return
 }
 
-function editTodo (e) {
- const idTodo = e.currentTarget.parentNode.parentNode.parentNode.id
+export function editTodo(e,idTodo) {
+  e.preventDefault();
+  // const idTodo = e.currentTarget.parentNode.parentNode.parentNode.id
       
-  console.log('edit',idTodo);
+  // console.log('edit', idTodo);
+
+  const found = data.find(todo => todo.id === idTodo);
+  console.log('found', found);
+  console.log(document.getElementById('name'))
+  document.getElementById('#name').value ='test'
+  const {
+    elements: { name, content, category }
+  } = e.currentTarget;
+
+  found.name = name.value;
+  found.content = content.value;
+  found.category = category.value;
+  
+
+  // console.log(name.value)
+  // const dates = content.value.match(/\d{2}([\/.-])\d{2}\1\d{4}/g)
+ 
+  // const newTodo = {
+  //   id: idTodo,
+  //   date: dateFormat(new Date(), "mmmm dS, yyyy"),
+  //   name: name.value,
+  //   content: content.value,
+  //   category: category.value,
+  //   dates: dates,
+  //   status:'active'
+  // }
+    
+  //data.push(...newTodo);
+
+  todoList.innerHTML = "";
+
+  createTodoList(data);
+  createSummaryData(data);
+  e.currentTarget.reset();
 //  const tasks = [ { id: 1, done: false }, { id: 2, done: false } ]
 // const completed_task = { id: 1, done: true }
 
@@ -121,12 +124,13 @@ function changeStatusTodo (e, newStatus) {
   return
 }
 
-function handleSubmit(evt) {
-  evt.preventDefault();
+function newTodo(e) {
+  e.preventDefault();
   const {
     elements: { name, content, category }
-  } = evt.currentTarget;
+  } = e.currentTarget;
 
+  console.log(name.value)
   if (name.value === "" || content.value === "") {
     return console.log("Please fill in all the fields!");
     }
