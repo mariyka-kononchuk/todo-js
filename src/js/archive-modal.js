@@ -1,5 +1,5 @@
 import refs from "./refs.js";
-import { generateArchiveList } from './todo-list';
+import { createArchiveList } from './todo-list';
 import { data } from "./data.js";
 const { archiveButton, addTodoButton, submitButton} = refs;
 const archiveLightBox = document.querySelector('.archive__lightbox');
@@ -12,9 +12,10 @@ archiveButton.addEventListener('click', onArchiveModalOpen);
 // submitButton.addEventListener('click', onTodoModalClose);
 
 function onArchiveModalOpen() {
-  generateArchiveList(data);
+  
     archiveLightBox.classList.remove('is-hidden');
-    body.classList.add('modal-open')
+  body.classList.add('modal-open');
+  createArchiveList(data);
 
     btnModalClose.addEventListener('click', onArchiveModalClose);
     archiveLightBox.addEventListener('click', evt => {

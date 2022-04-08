@@ -9,7 +9,7 @@ import { data } from "./data.js";
 const {todoList, archiveList, form, summary} = refs;
 const categoryName = ['Task', 'Idea', 'Random Thought'];
 
-function generateTodoList(data) {
+function createTodoList(data) {
 const activeTodos = data.filter((todo => todo.status === 'active'))
 const markup = todoTpl(activeTodos);
   // const markup = activeTodos
@@ -51,38 +51,34 @@ const markup = todoTpl(activeTodos);
         //вставляем шаблон в разметку с заполенными параметрами
     todoList.insertAdjacentHTML("beforeend", markup);
     
-      const todos = document.querySelectorAll('.todo-item')
+  const todos = document.querySelectorAll('.todo-item')
       for (let todo of todos) {
         const deleteButton = todo.querySelector('.icon-btn__delete');
         const editButton = todo.querySelector('.icon-btn__edit');
         const archiveButton = todo.querySelector('.icon-btn__archive');
         deleteButton.addEventListener('click', deleteTodo);
         editButton.addEventListener('click', editTodo);
-        archiveButton.addEventListener('click', archiveTodo);
+        archiveButton.addEventListener('click', (e)=> archiveTodo(e, 'archived'));
       }
-    generateSummaryData(data);
+    createSummaryData(data);
 }
 
-export function generateArchiveList(data) {
+export function createArchiveList(data) {
   const archivedTodos = data.filter((todo => todo.status === 'archived'));
-  console.log('archive',archivedTodos)
   const markup = archiveTpl(archivedTodos);
   archiveList.innerHTML = "";
     if (data.length === 0) {
-      return Notiflix.Notify.failure('Sorry, there are no tasks. Please add new task.');
+      return Notiflix.Notify.failure('There are no archived tasks');
       }
   archiveList.insertAdjacentHTML("beforeend", markup);
-  // const archives = document.querySelectorAll('.archive-item')
-        // for (let archive of archives) {
-        //   const deleteButton = archive.querySelector('.icon-btn__delete');
-          
-        //   deleteButton.addEventListener('click', deleteTodo);
-          
-        // }
-   
+  const allArchivedTodos = document.querySelectorAll('.archive-item')
+  for (let archivedTodo of allArchivedTodos) {
+      const unpackButton = archivedTodo.querySelector('.archive-btn__unpack');
+      unpackButton.addEventListener('click', (e)=> archiveTodo(e, 'active'));
+    }
 }
     
-generateTodoList(data, 'active');
+createTodoList(data, 'active');
 form.addEventListener("submit", handleSubmit);
 
 
@@ -92,7 +88,7 @@ function deleteTodo (e) {
   const index = data.findIndex(item => item.id === idTodo);
   if (index !== -1) {
     data.splice(index, 1);
-    generateTodoList(data);
+    createTodoList(data);
   }
   return
 }
@@ -110,16 +106,19 @@ function editTodo (e) {
 //   tasks.push(task);
 //   return tasks;
 }
-      
-
-
-function archiveTodo (e) {
+ 
+function archiveTodo (e, newStatus) {
   const idTodo = e.currentTarget.parentNode.parentNode.parentNode.id;
   const index = data.findIndex(item => item.id === idTodo);
-  data[index].status = "archived";
-  generateTodoList(data);
-  console.log(data)
-//  var result = foo.map(el => el.bar == 1 ? {...el, baz: [11,22,33]} : el)
+  data[index].status = newStatus;
+  if (newStatus = 'active') {
+    createTodoList(data);
+  }
+  if (newStatus = 'archived') {
+    createArchiveList(data);
+    createTodoList(data);
+  }
+  return
 }
 
 function handleSubmit(evt) {
@@ -148,21 +147,12 @@ function handleSubmit(evt) {
 
   todoList.innerHTML = "";
 
-  generateTodoList(data);
-  generateSummaryData(data);
+  createTodoList(data);
+  createSummaryData(data);
   evt.currentTarget.reset();
 }
 
-//generateArchivedList(data);
-
-
-
-
-
-
-
-
-function generateTotalData(data,categoryName) {
+function createTotalData(data,categoryName) {
   const totalData = [];
   const newArray = data.map(e => { return { category: e.category, status: e.status } });
   console.log('result', newArray)
@@ -193,10 +183,7 @@ function generateTotalData(data,categoryName) {
   return totalData;
 }
 
-
-
-
-function generateSummaryData(data) {
+function createSummaryData(data) {
 
   //const archiveTodos = data.filter((todo => todo.status === 'archived'));
   // const news = data.map(e => { return { category: e.category, status: e.status } })
@@ -229,7 +216,7 @@ function generateSummaryData(data) {
 //     archivedTotal:dates
 //   }
   
-  const totalData = generateTotalData(data, categoryName);
+  const totalData = createTotalData(data, categoryName);
   const index = totalData.findIndex(item => item.active === '' && item.archived === '');
   if (index !== -1) {
     totalData.splice(index, 1);
@@ -239,3 +226,7 @@ function generateSummaryData(data) {
   summary.innerHTML = "";
   summary.insertAdjacentHTML("beforeend", markup);
 };
+
+
+
+

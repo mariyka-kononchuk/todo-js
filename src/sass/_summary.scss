@@ -1,4 +1,4 @@
-.archive-wrapper {
+.summary-wrapper {
     display: flex;
     margin-bottom: 20px;
     padding-left: 25px;
@@ -12,17 +12,19 @@
     color:white;
     border-radius: 6px;
 }
-.archive-info__wrapper {
+.summary-info__wrapper {
     display: flex;
     margin-left: 200px;
 }
-.archive-item {
+.summary-item {
     display: flex;
     padding-left: 25px;
     padding-right: 25px;
+    margin-bottom: 20px;
+    background-color: rgb(241, 241, 252);
     
 }
-.archive-info {
+.summary-info {
     display: block;
     width: 145px;
 
@@ -32,22 +34,10 @@
     letter-spacing: 0.04em;
   
 }
-.todo-archive {
-    
-}
-.archive-item {
-    margin-bottom: 20px;
-    background-color: rgb(241, 241, 252);
-}
 
-.archive-info__font {
+
+
+.summary-info__font {
     font-weight: 500;
 }
 
-.archive-btn__unpack {
-    display: block;
-    margin-left: auto;
-    margin-right: 0;
-    
-    cursor: pointer;
-}
