@@ -93,10 +93,9 @@ function deleteTodo (e) {
 }
 
 function deleteAllTodos() {
-  data.splice(0, data.length);
+  data.splice(0, data.length)
+  summary.innerHTML = "";
   createTodoList(data);
-  createSummaryTable(data);
-  return data;
 }
 
 function editTodo(e) {
@@ -143,6 +142,7 @@ function changeStatusTodo (e, newStatus) {
 
 function summaryData(data) {
   const totalData = [];
+  console.log('data3', data)
   const newArray = data.map(e => { return { category: e.category, status: e.status } });
   for (const name of categoryName) {
     let totalActive = 0;
@@ -172,15 +172,13 @@ function summaryData(data) {
 }
 
 function createSummaryTable(data) {
-  const totalData = summaryData(data);
-  console.log('totalData', totalData)
-  for (let i = 0; i <= totalData.length; i += 1) {
-    if (totalData[i].active === '' && totalData[i].archived === '') {
-      console.log('yes',totalData[i].category)
-      totalData.splice(i, 1)
+  let totalData = summaryData(data);
+  for (const item of totalData) {
+    const index = totalData.findIndex(item => item.active === '' && item.archived === '');
+    if (index !== -1) {
+      totalData.splice(index, 1);
     }
   }
-  console.log('newTotalData', totalData)
   const markup = summaryTpl(totalData);
   summary.innerHTML = "";
   summary.insertAdjacentHTML("beforeend", markup);
