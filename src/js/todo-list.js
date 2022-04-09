@@ -60,29 +60,25 @@ function deleteTodo (e) {
   }
   return
 }
+export function saveChangesTodo (e) {
 
+}
 export function editTodo(e,idTodo) {
   e.preventDefault();
-  // const idTodo = e.currentTarget.parentNode.parentNode.parentNode.id
-      
-  // console.log('edit', idTodo);
-
   const found = data.find(todo => todo.id === idTodo);
   console.log('found', found);
-  console.log(document.getElementById('name'))
-  document.getElementById('#name').value ='test'
+ 
+  console.log('id', idTodo)
   const {
     elements: { name, content, category }
   } = e.currentTarget;
 
+  console.log('foundName', found.name)
+  console.log('nameValue',name.value)
   found.name = name.value;
   found.content = content.value;
   found.category = category.value;
-  
-
-  // console.log(name.value)
   // const dates = content.value.match(/\d{2}([\/.-])\d{2}\1\d{4}/g)
- 
   // const newTodo = {
   //   id: idTodo,
   //   date: dateFormat(new Date(), "mmmm dS, yyyy"),
@@ -92,18 +88,20 @@ export function editTodo(e,idTodo) {
   //   dates: dates,
   //   status:'active'
   // }
-    
-  //data.push(...newTodo);
+  // const index = data.findIndex(t => t.id === idTodo);
+  // console.log('index',index)
+  // data.splice(index, 1);
 
+  //data.push(newTodo);
+  console.log('newData', data)
   todoList.innerHTML = "";
 
   createTodoList(data);
   createSummaryData(data);
   e.currentTarget.reset();
-//  const tasks = [ { id: 1, done: false }, { id: 2, done: false } ]
-// const completed_task = { id: 1, done: true }
 
-// const markCompleted = (tasks, task) => {
+
+
 //   const index = tasks.findIndex(t => t.id === task.id);
 //   tasks.splice(index, 1);
 //   tasks.push(task);

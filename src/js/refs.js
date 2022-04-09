@@ -8,5 +8,5 @@ export default {
     archiveButton: document.getElementById('archive'),
     addTodoButton:document.querySelector('.add-todo-btn'),
     submitButton: document.querySelector('.submit-btn'),
-    //saveChangesButton: document.querySelector('.save-changes-btn'),
+    saveChangesButton: document.querySelector('.save-changes-btn'),
 };

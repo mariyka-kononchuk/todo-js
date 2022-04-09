@@ -1,21 +1,24 @@
 import refs from "./refs.js";
-//const { saveChangesButton } = refs;
+const { saveChangesButton } = refs;
 import { editTodo } from './todo-list';
 const editLightBox = document.querySelector('.edit__lightbox');
 const btnTeamModalClose = document.querySelector('.edit__modal--close');
 const body = document.querySelector('body');
 const editForm = document.querySelector('#edit-form');
+import { data } from "./data.js";
 
-//document.querySelector('.save-changes-btn').addEventListener('click', onEditModalClose);
+saveChangesButton.addEventListener('click', onEditModalClose);
 
 export function onEditModalOpen(e) {
   editLightBox.classList.remove('is-hidden');
   body.classList.add('modal-open');
   const idTodo = e.currentTarget.parentNode.parentNode.parentNode.id
-  console.log('edit', idTodo)
-  // console.log(document.getElementById('name'))
-  // document.getElementById('name').value ='test'
-  editForm.addEventListener("submit", (e)=>editTodo(e,idTodo));
+  const found = data.find(todo => todo.id === idTodo);
+  document.getElementById('name').value = found.name;
+  document.getElementById('category').value = found.category;
+  document.getElementById('content').value = found.content;
+  
+  editForm.addEventListener("submit", (e)=>editTodo(e,idTodo ));
  
 
     btnTeamModalClose.addEventListener('click', onEditModalClose);
