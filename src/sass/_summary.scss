@@ -4,17 +4,22 @@
     padding-left: 25px;
     
     font-size: 14px;
-    font-weight:600;
+    font-weight:700;
     line-height: 1.167;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.06em;
     
     background-color: rgb(165, 163, 163);
     color:white;
     border-radius: 6px;
 }
-.summary-info__wrapper {
+.summary-header__wrapper {
     display: flex;
     margin-left: 200px;
+}
+
+.summary-header {
+    display: block;
+    width: 145px;
 }
 .summary-item {
     display: flex;
@@ -24,20 +29,27 @@
     background-color: rgb(241, 241, 252);
     
 }
+
+.summary-info__wrapper {
+    display: flex;
+    margin-left: 200px;
+    color: rgb(92, 90, 90)
+}
+
 .summary-info {
     display: block;
     width: 145px;
 
     font-size: 12px;
-    font-weight: 400;
+    font-weight: 600;
     line-height: 1.167;
-    letter-spacing: 0.04em;
-  
+    letter-spacing: 0.06em;
 }
-
-
 
 .summary-info__font {
-    font-weight: 500;
+    font-weight: 700;
+    color: rgb(54, 54, 54);
 }
+
+
 
