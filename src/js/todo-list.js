@@ -7,14 +7,16 @@ import archiveTpl from '../templates/archive.hbs';
 import refs from "./refs.js";
 import { data } from "./data.js";
 import { onEditModalOpen } from './edit-modal';
-const { todoList, archiveList, form, editForm, summary } = refs;
+const { todoList, archiveList, todoForm, editForm, deleteAllButton, summary } = refs;
 
 const categoryName = ['Task', 'Idea', 'Random Thought'];
+
 let idTodo = '';
 
 createTodoList(data, 'active');
-form.addEventListener("submit", newTodo);
+todoForm.addEventListener("submit", addTodo);
 editForm.addEventListener("submit", (e) => saveChangesTodo(e, idTodo));
+deleteAllButton.addEventListener('click', deleteAllTodos);
 
 function createTodoList(data) {
 const activeTodos = data.filter((todo => todo.status === 'active'))
@@ -51,61 +53,7 @@ export function createArchiveList(data) {
     }
 }
     
-
-
-function deleteTodo (e) {
-  const idTodo = e.currentTarget.parentNode.parentNode.parentNode.id
-  const index = data.findIndex(item => item.id === idTodo);
-  if (index !== -1) {
-    data.splice(index, 1);
-    createTodoList(data);
-  }
-  return
-}
-
-export function editTodo(e) {
-  onEditModalOpen();
-  idTodo = e.currentTarget.parentNode.parentNode.parentNode.id;
-  const found = data.find(todo => todo.id === idTodo);
-  document.getElementById('name').value = found.name;
-  document.getElementById('category').value = found.category;
-  document.getElementById('content').value = found.content;
-}
-
-function saveChangesTodo(e, idTodo) {
-  e.preventDefault();
-  const found = data.find(todo => todo.id === idTodo);
-  const {
-      elements: { editName, editContent, editCategory }
-    } = e.currentTarget;
-  const dates = editContent.value.match(/\d{2}([\/.-])\d{2}\1\d{4}/g)
-
-  found.name = editName.value;
-  found.content = editContent.value;
-  found.category = editCategory.value;
-  found.dates = dates;
-
-  todoList.innerHTML = "";
-  createTodoList(data);
-  createSummaryData(data);
-  e.currentTarget.reset();
-}
- 
-function changeStatusTodo (e, newStatus) {
-  const idTodo = e.currentTarget.parentNode.parentNode.parentNode.id;
-  const index = data.findIndex(item => item.id === idTodo);
-  data[index].status = newStatus;
-  if (newStatus = 'active') {
-    createTodoList(data);
-  }
-  if (newStatus = 'archived') {
-    createArchiveList(data);
-    createTodoList(data);
-  }
-  return
-}
-
-function newTodo(e) {
+function addTodo(e) {
   e.preventDefault();
   const {
     elements: { name, content, category }
@@ -132,6 +80,65 @@ function newTodo(e) {
   createTodoList(data);
   createSummaryTable(data);
   e.currentTarget.reset();
+}
+
+function deleteTodo (e) {
+  const idTodo = e.currentTarget.parentNode.parentNode.parentNode.id
+  const index = data.findIndex(item => item.id === idTodo);
+  if (index !== -1) {
+    data.splice(index, 1);
+    createTodoList(data);
+  }
+  return
+}
+
+function deleteAllTodos() {
+  data.splice(0, data.length);
+  createTodoList(data);
+  createSummaryTable(data);
+  return data;
+}
+
+function editTodo(e) {
+  onEditModalOpen();
+  idTodo = e.currentTarget.parentNode.parentNode.parentNode.id;
+  const found = data.find(todo => todo.id === idTodo);
+  document.getElementById('name').value = found.name;
+  document.getElementById('category').value = found.category;
+  document.getElementById('content').value = found.content;
+}
+
+function saveChangesTodo(e, idTodo) {
+  e.preventDefault();
+  const found = data.find(todo => todo.id === idTodo);
+  const {
+      elements: { editName, editContent, editCategory }
+    } = e.currentTarget;
+  const dates = editContent.value.match(/\d{2}([\/.-])\d{2}\1\d{4}/g)
+
+  found.name = editName.value;
+  found.content = editContent.value;
+  found.category = editCategory.value;
+  found.dates = dates;
+
+  todoList.innerHTML = "";
+  createTodoList(data);
+  createSummaryTable(data);
+  e.currentTarget.reset();
+}
+ 
+function changeStatusTodo (e, newStatus) {
+  const idTodo = e.currentTarget.parentNode.parentNode.parentNode.id;
+  const index = data.findIndex(item => item.id === idTodo);
+  data[index].status = newStatus;
+  if (newStatus = 'active') {
+    createTodoList(data);
+  }
+  if (newStatus = 'archived') {
+    createArchiveList(data);
+    createTodoList(data);
+  }
+  return
 }
 
 function summaryData(data) {
@@ -166,10 +173,14 @@ function summaryData(data) {
 
 function createSummaryTable(data) {
   const totalData = summaryData(data);
-  const index = totalData.findIndex(item => item.active === '' && item.archived === '');
-  if (index !== -1) {
-    totalData.splice(index, 1);
+  console.log('totalData', totalData)
+  for (let i = 0; i <= totalData.length; i += 1) {
+    if (totalData[i].active === '' && totalData[i].archived === '') {
+      console.log('yes',totalData[i].category)
+      totalData.splice(i, 1)
+    }
   }
+  console.log('newTotalData', totalData)
   const markup = summaryTpl(totalData);
   summary.innerHTML = "";
   summary.insertAdjacentHTML("beforeend", markup);
