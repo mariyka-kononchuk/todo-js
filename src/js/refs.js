@@ -1,5 +1,6 @@
 export default {
     form: document.querySelector('#todo-form'),
+    editForm: document.querySelector('#edit-form'),
     todoList: document.getElementById('todo-list'),
     archiveList: document.getElementById('archive-list'),
     item: document.querySelector('.todo-item'),

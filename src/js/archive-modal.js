@@ -6,14 +6,10 @@ const archiveLightBox = document.querySelector('.archive__lightbox');
 const btnModalClose = document.querySelector('.archive__modal--close');
 const body = document.querySelector('body');
 
-
 archiveButton.addEventListener('click', onArchiveModalOpen);
-// addTodoButton.addEventListener('click', onTodoModalOpen);
-// submitButton.addEventListener('click', onTodoModalClose);
 
 function onArchiveModalOpen() {
-  
-    archiveLightBox.classList.remove('is-hidden');
+  archiveLightBox.classList.remove('is-hidden');
   body.classList.add('modal-open');
   createArchiveList(data);
 

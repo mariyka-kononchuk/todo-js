@@ -7,9 +7,9 @@ import archiveTpl from '../templates/archive.hbs';
 import refs from "./refs.js";
 import { data } from "./data.js";
 import { onEditModalOpen } from './edit-modal';
-const {todoList, archiveList, form, summary} = refs;
+const {todoList, archiveList, form, editForm,summary} = refs;
 const categoryName = ['Task', 'Idea', 'Random Thought'];
-
+let idTodo = '';
 function createTodoList(data) {
 const activeTodos = data.filter((todo => todo.status === 'active'))
 const markup = todoTpl(activeTodos);
@@ -24,7 +24,7 @@ const markup = todoTpl(activeTodos);
         const editButton = todo.querySelector('.icon-btn__edit');
         const archiveButton = todo.querySelector('.icon-btn__archive');
         deleteButton.addEventListener('click', deleteTodo);
-        editButton.addEventListener('click', (e)=>onEditModalOpen(e));
+        editButton.addEventListener('click', editTodo);
         archiveButton.addEventListener('click', (e)=> changeStatusTodo(e, 'archived'));
       }
     createSummaryData(data);
@@ -48,11 +48,10 @@ export function createArchiveList(data) {
 createTodoList(data, 'active');
 
 form.addEventListener("submit", newTodo);
-
+editForm.addEventListener("submit", (e) => saveChangesTodo(e, idTodo));
 
 function deleteTodo (e) {
   const idTodo = e.currentTarget.parentNode.parentNode.parentNode.id
-  //console.log('delete', data.filter(item => item.id !== idTodo));
   const index = data.findIndex(item => item.id === idTodo);
   if (index !== -1) {
     data.splice(index, 1);
@@ -60,52 +59,71 @@ function deleteTodo (e) {
   }
   return
 }
-export function saveChangesTodo (e) {
 
-}
-export function editTodo(e,idTodo) {
-  e.preventDefault();
+export function editTodo(e) {
+  onEditModalOpen();
+  idTodo = e.currentTarget.parentNode.parentNode.parentNode.id;
   const found = data.find(todo => todo.id === idTodo);
-  console.log('found', found);
- 
-  console.log('id', idTodo)
-  const {
-    elements: { name, content, category }
-  } = e.currentTarget;
+  document.getElementById('name').value = found.name;
+  document.getElementById('category').value = found.category;
+  document.getElementById('content').value = found.content;
+  // editForm.addEventListener("submit", (e) => saveChangesTodo(e, idTodo));
+ // editForm.removeEventListener("submit", (e)=>saveChangesTodo(e,idTodo));
+}
 
-  console.log('foundName', found.name)
-  console.log('nameValue',name.value)
-  found.name = name.value;
-  found.content = content.value;
-  found.category = category.value;
+function saveChangesTodo(e, idTodo) {
+  e.preventDefault();
+  console.log('нажали на сохранение изменений')
+  console.log('id',idTodo)
+  const found = data.find(todo => todo.id === idTodo);
+  
+  console.log('found', found);
+  // console.log('foundName:', found.name)
+  
+  const {
+      elements: { editName, editContent, editCategory }
+    } = e.currentTarget;
+  
+  
+  console.log('found.name', found.name)
+  found.name = editName.value;
   // const dates = content.value.match(/\d{2}([\/.-])\d{2}\1\d{4}/g)
+ 
   // const newTodo = {
   //   id: idTodo,
   //   date: dateFormat(new Date(), "mmmm dS, yyyy"),
-  //   name: name.value,
-  //   content: content.value,
-  //   category: category.value,
+  //   name: editName.value,
+  //   content: editContent.value,
+  //   category: editCategory.value,
   //   dates: dates,
   //   status:'active'
   // }
+  // console.log('newTodo', newTodo)
+
   // const index = data.findIndex(t => t.id === idTodo);
   // console.log('index',index)
   // data.splice(index, 1);
+  // data.push(newTodo);
+ 
+  
 
-  //data.push(newTodo);
+  // const editName = document.querySelector('.edit-name');
+  // const editContent = document.querySelector('.edit-content')
+  console.log('inputName:', editName.value)
+ // console.log('inputContent:',editContent.value)
+  
+  console.log('nameValue:', editName.value)
+  
+  // found.name = editName.value;
+  // found.content = editContent.value;
+  // found.category = editCategory.value;
+  
   console.log('newData', data)
   todoList.innerHTML = "";
-
   createTodoList(data);
   createSummaryData(data);
-  e.currentTarget.reset();
-
-
-
-//   const index = tasks.findIndex(t => t.id === task.id);
-//   tasks.splice(index, 1);
-//   tasks.push(task);
-//   return tasks;
+  //e.currentTarget.reset();
+ 
 }
  
 function changeStatusTodo (e, newStatus) {
@@ -146,18 +164,15 @@ function newTodo(e) {
   }
     
   data.push(newTodo);
-
   todoList.innerHTML = "";
-
   createTodoList(data);
   createSummaryData(data);
-  evt.currentTarget.reset();
+  e.currentTarget.reset();
 }
 
 function createTotalData(data,categoryName) {
   const totalData = [];
   const newArray = data.map(e => { return { category: e.category, status: e.status } });
-  console.log('result', newArray)
   for (const name of categoryName) {
     let totalActive = 0;
     let totalArchived = 0;
@@ -186,44 +201,11 @@ function createTotalData(data,categoryName) {
 }
 
 function createSummaryData(data) {
-
-  //const archiveTodos = data.filter((todo => todo.status === 'archived'));
-  // const news = data.map(e => { return { category: e.category, status: e.status } })
-  // console.log('свойства',
-  //   data.filter(item => item.status === 'active'))
-  // console.log('вариант',
-  //   data.map(e => { return { category: e.category, status: e.status } }))
-  // console.log('news',news.reduce((total,x) => (x.category==='Idea'&& x.status==='active' ? total+1 : total), 0))
-  
- 
-//   function fieldByIndex(products, field){
-//  return products.reduce((acc,curr) => {
-//    const key = curr[field];
-//    const value = acc[key] ? [...acc[key], curr] : [curr];
-//    acc[key] = value;
-//    console.log('acc',acc)
-//    return acc;
-//  }, {});
-// }
-
-// fieldByIndex(news, 'category')
-     
-//   console.log('свойства',
-//     data.filter(item => item.status === 'active')
-//   .map(e => { return { category: e.category, totalActive: e.category.reduce((a,b) => a + b, 0) } }))
- 
-//    const newArchive = {
-//     category: content.value,
-//     activeTotal: category.value,
-//     archivedTotal:dates
-//   }
-  
   const totalData = createTotalData(data, categoryName);
   const index = totalData.findIndex(item => item.active === '' && item.archived === '');
   if (index !== -1) {
     totalData.splice(index, 1);
   }
-  console.log('total', totalData)
   const markup = summaryTpl(totalData);
   summary.innerHTML = "";
   summary.insertAdjacentHTML("beforeend", markup);
