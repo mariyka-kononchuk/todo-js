@@ -85,9 +85,35 @@
 .add-todo-btn {
     display: block;
     margin-left: auto;
-    margin-right: 0;
-
     cursor: pointer;
+    text-align: center;
+    width: 110px;
+    height: 28px;
+    background-color: white;
+    color: rgb(92, 90, 90);
+    
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.333;
+    
+    border-radius: 5px;
+    border: 2px solid rgb(165, 163, 163);
+    
+    &:hover {
+        background-color: rgb(165, 163, 163);
+        color: white;
+        border: 2px solid rgb(165, 163, 163);
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    }
+    
+    &:focus {
+        outline: none;
+        border: 2px solid rgb(165, 163, 163);
+        background-color: white;
+        color: rgb(92, 90, 90);
+    }
 }
 
 
