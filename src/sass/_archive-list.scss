@@ -1,4 +1,4 @@
-.archive__lightbox {
+.archive-lightbox {
     @media screen and (min-width: 320px) {
         position: fixed;
         top: 0;
@@ -19,7 +19,7 @@
     }
 }
 
-.archive__modal {
+.archive-modal {
     position: absolute;
 
     width: 280px;
@@ -50,7 +50,7 @@
 }
 
 
-.archive__modal--close {
+.archive-modal__close {
     position: absolute;
     top: 5px;
     right: 5px;
@@ -64,7 +64,29 @@
         fill: #2c2b2b;
     }
 }
+.archive-header-wrapper {
+    display: flex;
+    margin-bottom: 20px;
+    padding-left: 48px;
 
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.167;
+    letter-spacing: 0.06em;
+
+    background-color: rgb(165, 163, 163);
+    color: white;
+    border-radius: 6px;
+}
+
+.archive-header-info {
+    display: block;
+    width: 144px;
+}
+
+.archive-header-info__name {
+    width: 170px;
+}
 .archive-list {
     margin-bottom: 20px;
     color: rgb(92, 90, 90)
@@ -76,7 +98,7 @@
 
 .archive-wrapper {
     display: flex;
-    padding-left: 25px;
+    padding-left: 10px;
     padding-right: 25px;
 
     background-color: rgb(241, 241, 252);
@@ -93,7 +115,7 @@
 }
 
 .archive-info__font {
-    width: 180px;
+    width: 168px;
     color: rgb(54, 54, 54);
     font-weight: 700;
 }
@@ -161,4 +183,24 @@
         background-color: white;
         color: rgb(92, 90, 90);
     }
+}
+
+.archive-icon {
+    box-sizing: border-box;
+    width: 30px;
+    height: 30px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 10px;
+
+    background-color: rgb(92, 90, 90);
+    border-radius: 50%;
+}
+
+.archive-icon__svg {
+    //display: block;
+
+    margin-top: 5px;
+    margin-left: 5px;
+    fill: whitesmoke;
 }

@@ -9,5 +9,9 @@ export default {
     addTodoSubmitButton: document.getElementById('add-todo-submit'),
     archiveButton: document.getElementById('archive'),
     deleteAllButton: document.getElementById('delete-all'),
-    saveChangesButton: document.querySelector('.save-changes-btn')
+    saveChangesButton: document.querySelector('.save-changes-btn'),
+    body: document.querySelector('body'),
+    todoLightBox: document.querySelector('.todo-lightbox'),
+    editLightBox:document.querySelector('.edit-lightbox'),
+    archiveLightBox: document.querySelector('.archive-lightbox'),
 };

@@ -1,5 +1,5 @@
 
-.edit__lightbox {
+.edit-lightbox {
     @media screen and (min-width: 320px) {
         position: fixed;
         top: 0;
@@ -20,7 +20,7 @@
     }
 }
 
-.edit__modal {
+.edit-modal {
     position: absolute;
 
     width: 280px;
@@ -51,7 +51,7 @@
 }
 
 
-.edit__modal--close {
+.edit-modal__close {
     position: absolute;
     top: 5px;
     right: 5px;
@@ -66,5 +66,90 @@
     }
 }
 
+.edit-form {
+    display: flex;
+    padding-top: 20px;
+    color: rgb(165, 163, 163);
 
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.167;
+    letter-spacing: 0.06em;
+}
+
+.edit-input {
+    margin-right: 10px;
+    border-radius: 5px;
+    width: 200px;
+    height: 25px;
+    border: 1px solid rgb(165, 163, 163);
+
+    &:focus {
+        outline: none;
+        border: 2px solid rgb(92, 90, 90);
+
+    }
+}
+
+.edit-select {
+    margin-right: 10px;
+    height: 25px;
+    border-radius: 5px;
+    border: 1px solid rgb(165, 163, 163);
+
+    &:focus {
+        outline: none;
+        border: 2px solid rgb(92, 90, 90);
+
+    }
+}
+
+.edit-textarea {
+    margin-right: 10px;
+    border-radius: 5px;
+    width: 300px;
+    border: 1px solid rgb(165, 163, 163);
+
+    &:focus {
+        outline: none;
+        border: 2px solid rgb(92, 90, 90);
+
+    }
+}
+
+.save-changes-btn {
+    display: block;
+    margin-left: auto;
+
+    text-align: center;
+    width: 120px;
+    height: 24px;
+    background-color: white;
+    color: rgb(92, 90, 90);
+
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.117;
+
+    border-radius: 5px;
+    border: 1px solid rgb(165, 163, 163);
+
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgb(165, 163, 163);
+        color: white;
+        border: 2px solid rgb(165, 163, 163);
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    &:focus {
+        outline: none;
+        border: 2px solid rgb(165, 163, 163);
+        background-color: white;
+        color: rgb(92, 90, 90);
+    }
+}
 

@@ -1,17 +1,16 @@
 import refs from "./refs.js";
-const { saveChangesButton } = refs;
-const editLightBox = document.querySelector('.edit__lightbox');
-const btnTeamModalClose = document.querySelector('.edit__modal--close');
-const body = document.querySelector('body');
+const { saveChangesButton, body, editLightBox } = refs;
+
+const buttonModalClose = document.querySelector('.edit-modal__close');
 
 saveChangesButton.addEventListener('click', onEditModalClose);
 
 export function onEditModalOpen(e) {
   editLightBox.classList.remove('is-hidden');
   body.classList.add('modal-open');
-  btnTeamModalClose.addEventListener('click', onEditModalClose);
+  buttonModalClose.addEventListener('click', onEditModalClose);
   editLightBox.addEventListener('click', evt => {
-    if (evt.target.classList.contains('edit__lightbox')) {
+    if (evt.target.classList.contains('edit-lightbox')) {
     onEditModalClose();
       }
   });
@@ -24,9 +23,9 @@ export function onEditModalOpen(e) {
 }
 
 function onEditModalClose() {
-  btnTeamModalClose.removeEventListener('click', onEditModalClose);
+  buttonModalClose.removeEventListener('click', onEditModalClose);
   editLightBox.removeEventListener('click', evt => {
-    if (evt.target.classList.contains('edit__lightbox')) {
+    if (evt.target.classList.contains('edit-lightbox')) {
       onEditModalClose();
     }
   });

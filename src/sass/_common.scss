@@ -67,8 +67,8 @@ li {
     }
     
     @media screen and (min-width: 1024px) {
-        padding-left: 30px;
-        padding-right: 30px;
+        padding-left: 10px;
+        padding-right: 10px;
         width: 1024px;
     }
 }
@@ -80,30 +80,14 @@ li {
 .icon-btn {
     margin-right: 5px;
     cursor: pointer;
-    // border:none;
     border:none;
-   // outline: none;
-   background-color: transparent;
-&:hover {
-    fill: #ff6b01;
-}
+    background-color: transparent;
 }
 
-.icon-btn-archive {
-    margin-right: 10px;
-    cursor: pointer;
-    
-}
-.header-icon {
-    display: flex;
-    margin-left: 95px;
-}
-.icon{
-    fill: whitesmoke;
-    &:hover {
-        fill: rgb(97, 89, 89);
-    }
-}
+
+
+
+
 
 
 
