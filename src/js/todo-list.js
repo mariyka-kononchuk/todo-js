@@ -48,8 +48,8 @@ export function createArchiveList(data) {
   archiveList.insertAdjacentHTML("beforeend", markup);
   const allArchivedTodos = document.querySelectorAll('.archive-item')
   for (let archivedTodo of allArchivedTodos) {
-      const unpackButton = archivedTodo.querySelector('.archive-btn__unpack');
-      unpackButton.addEventListener('click', (e)=> changeStatusTodo(e, 'active'));
+    const unpackButton = archivedTodo.querySelector('.archive-btn__unpack');
+    unpackButton.addEventListener('click', (e)=> changeStatusTodo(e, 'active'));
     }
 }
     
@@ -126,7 +126,7 @@ function saveChangesTodo(e, idTodo) {
   e.currentTarget.reset();
 }
  
-function changeStatusTodo (e, newStatus) {
+function changeStatusTodo(e, newStatus) {
   const idTodo = e.currentTarget.parentNode.parentNode.parentNode.id;
   const index = data.findIndex(item => item.id === idTodo);
   data[index].status = newStatus;
@@ -142,7 +142,6 @@ function changeStatusTodo (e, newStatus) {
 
 function summaryData(data) {
   const totalData = [];
-  console.log('data3', data)
   const newArray = data.map(e => { return { category: e.category, status: e.status } });
   for (const name of categoryName) {
     let totalActive = 0;
