@@ -88,7 +88,6 @@ function addTodo(e) {
   let url = '';
   for (const icon of icons) {
     if (category.value === icon.name) {
-      console.log(icon.svgUrl)
       url = icon.svgUrl;
     }
   }
@@ -171,7 +170,8 @@ function changeStatusTodo(e, newStatus) {
 
 function summaryData(data) {
   const totalData = [];
-  const newArray = data.map(e => { return { category: e.category, status: e.status } });
+  const newArray = data.map(e => { return { category: e.category, status: e.status} });
+  console.log(newArray)
   for (const name of categoryName) {
     let totalActive = 0;
     let totalArchived = 0;
@@ -183,16 +183,26 @@ function summaryData(data) {
         totalArchived++;
       }
     }
+
     if (totalActive === 0) {
       totalActive = ''
     }
     if (totalArchived === 0) {
       totalArchived = ''
     }
+
+    let url = '';
+    for (const icon of icons) {
+      if (name === icon.name) {
+        url = icon.svgUrl;
+      }
+    }
+    
     const newTotalData = {
       category: name,
       active: totalActive,
-      archived: totalArchived
+      archived: totalArchived,
+      svgUrl:url
     }
     totalData.push(newTotalData)
   }
