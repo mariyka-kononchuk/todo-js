@@ -7,13 +7,13 @@
                 </svg>
             </button>
             <form class="edit-form" id="edit-form" autocomplete="off">
-                <input class="edit-name" type="text" name="editName"  id="name"/>
-                <select name="editCategory" id="category">
+                <input class="edit-input" type="text" name="editName"  id="name"/>
+                <select  class="edit-select" name="editCategory" id="category">
                     <option value="Task">Task</option>
                     <option value="Random Thought">Random Thought</option>
                     <option value="Idea">Idea</option>
                 </select>
-                <input class="edit-content" type="text" name="editContent" id="content" />
+                <textarea class="edit-textarea" rows="3" type="text" name="editContent" id="content" placeholder="Content..."></textarea>
                 <button type="submit" class="create save-changes-btn">Save changes</button>
             </form>
     </div>
