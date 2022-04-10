@@ -1,11 +1,10 @@
 import refs from "./refs.js";
-const { addTodoButton, addTodoSubmitButton} = refs;
+const { addTodoButton} = refs;
 const todoLightBox = document.querySelector('.todo__lightbox');
 const buttonModalClose = document.querySelector('.todo__modal--close');
 const body = document.querySelector('body');
 
 addTodoButton.addEventListener('click', onTodoModalOpen);
-//addTodoSubmitButton.addEventListener('click', onTodoModalClose);
 
 function onTodoModalOpen() {
     todoLightBox.classList.remove('is-hidden');

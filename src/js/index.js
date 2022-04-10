@@ -1,5 +1,5 @@
 import '../sass/main.scss';
-import './todo-list';
+import './todo-app';
 import './edit-modal';
 import './todo-modal';
 import './archive-modal';
