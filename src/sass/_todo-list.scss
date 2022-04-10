@@ -213,8 +213,8 @@
     border-radius: 50%;
 
     @media screen and (min-width: 768px) {
-        width: 20px;
-        height: 20px;
+        width: 25px;
+        height: 25px;
     }
     
     @media screen and (min-width: 1024px) {
@@ -224,9 +224,18 @@
 }
 
 .todo-icon__svg {
-    margin-top: 5px;
-    margin-left: 5px;
     fill: whitesmoke;
+    @media screen and (min-width: 768px) {
+        width: 16px;
+        height: 16px;
+        margin-top: 4px;
+        margin-left: 4px;
+    }
+    
+    @media screen and (min-width: 1024px) {
+        margin-top: 5px;
+        margin-left: 5px;
+    }
 }
 .svg-icon {
     fill: rgb(112, 106, 106);
