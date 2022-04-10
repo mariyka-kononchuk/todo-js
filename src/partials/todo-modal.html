@@ -1,0 +1,20 @@
+<!-- TODO-MODAL -->
+<div class="todo__lightbox is-hidden">
+    <div class="todo__modal">
+            <button class="todo__modal--close">
+                <svg class="close-svg" width="28" height="28">
+                    <use href="./images/icons.svg#icon-close"></use>
+                </svg>
+            </button>
+            <form class="todo-form" id="todo-form" autocomplete="off">
+                <input class="todo-input" type="text" name="name" placeholder="Name..." />
+                <select class="todo-select" name="category">
+                    <option value="Task" selected>Task</option>
+                    <option value="Random Thought">Random Thought</option>
+                    <option value="Idea">Idea</option>
+                </select>
+                <textarea class="todo-textarea" rows="3" type="text" name="content" placeholder="Content..."></textarea>
+                <button type="submit" class="add-todo-btn" id="add-todo-submit">Create note</button>
+            </form>
+    </div>
+</div>

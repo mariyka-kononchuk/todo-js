@@ -1,0 +1,18 @@
+{{#each this}}
+    <li class="archive-item" id={{id}}>
+        {{!-- <svg class="todo-icon" width="12" height="12">
+          <use "href=./images/icons.svg#icon-delete"></use>
+        </svg> --}}
+        <div class="archive-wrapper" >
+            <p class="archive-info archive-info__font">{{name}}</p>
+            <p class="archive-info">{{date}}</p>
+            <p class="archive-info">{{category}}</p>
+            <p class="archive-info__content">{{content}}</p>
+            <p class="archive-info">{{dates}}</p>
+            <div class="archive-button__wrapper">
+                <button type="button" class="archive-btn__unpack">Unpack</button>      
+            </div>    
+        </div>
+    </li>
+{{/each}}
+
