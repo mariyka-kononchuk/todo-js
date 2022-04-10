@@ -68,8 +68,8 @@ function addTodo(e) {
   const newTodo = {
     id: uuidv4(),
     date: dateFormat(new Date(), "mmmm dS, yyyy"),
-    name: name.value,
-    content: content.value,
+    name: name.value.trim(),
+    content: content.value.trim(),
     category: category.value,
     dates: dates,
     status:'active'
@@ -115,8 +115,8 @@ function saveChangesTodo(e, idTodo) {
     } = e.currentTarget;
   const dates = editContent.value.match(/\d{2}([\/.-])\d{2}\1\d{4}/g)
 
-  found.name = editName.value;
-  found.content = editContent.value;
+  found.name = editName.value.trim();
+  found.content = editContent.value.trim();
   found.category = editCategory.value;
   found.dates = dates;
 
