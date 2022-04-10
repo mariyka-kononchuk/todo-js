@@ -165,7 +165,6 @@
     }
 }
 .todo-icon {
-    box-sizing: border-box;
     width: 30px;
     height: 30px;
     margin-top: auto;
@@ -177,8 +176,6 @@
 }
 
 .todo-icon__svg {
-    //display: block;
-    
     margin-top: 5px;
     margin-left: 5px;
     fill: whitesmoke;

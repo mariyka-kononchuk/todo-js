@@ -7,7 +7,6 @@ import archiveTpl from '../templates/archive.hbs';
 import refs from "./refs.js";
 import { data } from "./data.js";
 import { onEditModalOpen } from './edit-modal';
-
 import sprite from '../images/icons.svg'
 
 const {
@@ -35,29 +34,33 @@ const icons = [
 ]
 let idTodo = '';
 
-createTodoList(data, 'active');
-todoForm.addEventListener("submit", addTodo);
-editForm.addEventListener("submit", (e) => saveChangesTodo(e, idTodo));
-deleteAllButton.addEventListener('click', deleteAllTodos);
+createTodoApp();
+
+function createTodoApp() {
+  createTodoList(data, 'active');
+  todoForm.addEventListener("submit", addTodo);
+  editForm.addEventListener("submit", (e) => saveChangesTodo(e, idTodo));
+  deleteAllButton.addEventListener('click', deleteAllTodos);
+}
 
 function createTodoList(data) {
-const activeTodos = data.filter((todo => todo.status === 'active'))
-const markup = todoTpl(activeTodos);
+  const activeTodos = data.filter((todo => todo.status === 'active'))
+  const markup = todoTpl(activeTodos);
   todoList.innerHTML = "";
-        if (data.length === 0) {
-            return Notiflix.Notify.failure('Sorry, there are no tasks. Please add new task.');
-        }
+  if (data.length === 0) {
+    return Notiflix.Notify.failure('Sorry, there are no tasks. Please add new task.');
+  }
   todoList.insertAdjacentHTML("beforeend", markup);
   const todos = document.querySelectorAll('.todo-item')
-      for (let todo of todos) {
-        const deleteButton = todo.querySelector('.icon-btn__delete');
-        const editButton = todo.querySelector('.icon-btn__edit');
-        const archiveButton = todo.querySelector('.icon-btn__archive');
-        deleteButton.addEventListener('click', deleteTodo);
-        editButton.addEventListener('click', editTodo);
-        archiveButton.addEventListener('click', (e)=> changeStatusTodo(e, 'archived'));
-      }
-    createSummaryTable(data);
+  for (let todo of todos) {
+    const deleteButton = todo.querySelector('.icon-btn__delete');
+    const editButton = todo.querySelector('.icon-btn__edit');
+    const archiveButton = todo.querySelector('.icon-btn__archive');
+    deleteButton.addEventListener('click', deleteTodo);
+    editButton.addEventListener('click', editTodo);
+    archiveButton.addEventListener('click', (e)=> changeStatusTodo(e, 'archived'));
+  }
+  createSummaryTable(data);
 }
 
 export function createArchiveList(data) {
@@ -66,13 +69,13 @@ export function createArchiveList(data) {
   archiveList.innerHTML = "";
     if (data.length === 0) {
       return Notiflix.Notify.failure('There are no archived tasks');
-      }
+    }
   archiveList.insertAdjacentHTML("beforeend", markup);
   const allArchivedTodos = document.querySelectorAll('.archive-item')
   for (let archivedTodo of allArchivedTodos) {
     const unpackButton = archivedTodo.querySelector('.archive-btn__unpack');
     unpackButton.addEventListener('click', (e)=> changeStatusTodo(e, 'active'));
-    }
+  }
 }
     
 function addTodo(e) {
@@ -82,7 +85,7 @@ function addTodo(e) {
   } = e.currentTarget;
 
   if (name.value === "" || content.value === "") {
-    return Notiflix.Notify.failure('Please fill in all the fields!')
+    return Notiflix.Notify.failure('Please fill in all fields')
   }
 
   const dates = content.value.match(/\d{2}([\/.-])\d{2}\1\d{4}/g)
