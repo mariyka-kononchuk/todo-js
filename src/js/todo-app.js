@@ -20,15 +20,15 @@ const categoryName = ['Task', 'Idea', 'Random Thought'];
 const icons = [
    {
       name: 'Task',
-      svgUrl: '/icons.2d421eb7.svg#icon-buy'
+      svgUrl: 'assets/edit.svg'
   },
     {
       name: 'Idea',
-      svgUrl: '/icons.2d421eb7.svg#icon-lamp'
+      svgUrl: '/icons.svg#icon-lamp'
   },
       {
       name: 'Random Thought',
-      svgUrl: '/icons.2d421eb7.svg#icon-mind'
+      svgUrl: '/icons.svg#icon-mind'
     },
 ]
 let idTodo = '';
@@ -171,7 +171,6 @@ function changeStatusTodo(e, newStatus) {
 function summaryData(data) {
   const totalData = [];
   const newArray = data.map(e => { return { category: e.category, status: e.status} });
-  console.log(newArray)
   for (const name of categoryName) {
     let totalActive = 0;
     let totalArchived = 0;
