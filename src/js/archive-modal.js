@@ -1,11 +1,9 @@
 import refs from "./refs.js";
-import { createArchiveList } from './todo-app';
+import { createArchiveList} from './todo-app';
 import { data } from "./data.js";
-const { archiveButton } = refs;
+const { archiveButton, body, archiveLightBox } = refs;
 
-const archiveLightBox = document.querySelector('.archive__lightbox');
-const btnModalClose = document.querySelector('.archive__modal--close');
-const body = document.querySelector('body');
+const buttonModalClose = document.querySelector('.archive-modal__close');
 
 archiveButton.addEventListener('click', onArchiveModalOpen);
 
@@ -14,9 +12,9 @@ function onArchiveModalOpen() {
   body.classList.add('modal-open');
   createArchiveList(data);
 
-  btnModalClose.addEventListener('click', onArchiveModalClose);
+  buttonModalClose.addEventListener('click', onArchiveModalClose);
   archiveLightBox.addEventListener('click', evt => {
-    if (evt.target.classList.contains('archive__lightbox')) {
+    if (evt.target.classList.contains('archive-lightbox')) {
       onArchiveModalClose();
       }
   });
@@ -29,9 +27,9 @@ function onArchiveModalOpen() {
 }
 
 function onArchiveModalClose() {
-  btnModalClose.removeEventListener('click', onArchiveModalClose);
+  buttonModalClose.removeEventListener('click', onArchiveModalClose);
   archiveLightBox.removeEventListener('click', evt => {
-    if (evt.target.classList.contains('archive__lightbox')) {
+    if (evt.target.classList.contains('archive-lightbox')) {
       onArchiveModalClose();
     }
   });

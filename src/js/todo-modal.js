@@ -1,8 +1,7 @@
 import refs from "./refs.js";
-const { addTodoButton} = refs;
-const todoLightBox = document.querySelector('.todo__lightbox');
-const buttonModalClose = document.querySelector('.todo__modal--close');
-const body = document.querySelector('body');
+const { addTodoButton, body, todoLightBox} = refs;
+
+const buttonModalClose = document.querySelector('.todo-modal__close');
 
 addTodoButton.addEventListener('click', onTodoModalOpen);
 
@@ -12,7 +11,7 @@ function onTodoModalOpen() {
 
     buttonModalClose.addEventListener('click', onTodoModalClose);
     todoLightBox.addEventListener('click', evt => {
-        if (evt.target.classList.contains('todo__lightbox')) {
+        if (evt.target.classList.contains('todo-lightbox')) {
         onTodoModalClose();
         }
     });
@@ -27,7 +26,7 @@ function onTodoModalOpen() {
 export function onTodoModalClose() {
   buttonModalClose.removeEventListener('click', onTodoModalClose);
   todoLightBox.removeEventListener('click', evt => {
-    if (evt.target.classList.contains('todo__lightbox')) {
+    if (evt.target.classList.contains('todo-lightbox')) {
       onTodoModalClose();
     }
   });

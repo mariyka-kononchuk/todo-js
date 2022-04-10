@@ -172,3 +172,16 @@
 .svg-icon:hover {
     fill: rgb(165, 163, 163);;
 }
+
+.icon {
+    fill: whitesmoke;
+
+    &:hover {
+        fill: rgb(97, 89, 89);
+    }
+}
+
+.header-icon {
+    display: flex;
+    margin-left: 95px;
+}

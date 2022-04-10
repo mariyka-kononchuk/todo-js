@@ -1,5 +1,5 @@
 
-.edit__lightbox {
+.edit-lightbox {
     @media screen and (min-width: 320px) {
         position: fixed;
         top: 0;
@@ -20,7 +20,7 @@
     }
 }
 
-.edit__modal {
+.edit-modal {
     position: absolute;
 
     width: 280px;
@@ -51,7 +51,7 @@
 }
 
 
-.edit__modal--close {
+.edit-modal__close {
     position: absolute;
     top: 5px;
     right: 5px;
