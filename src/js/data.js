@@ -6,7 +6,8 @@ export const data = [
         category: 'Task',
         content: 'Tomatoes, bread',
         dates: '3/5/2022',
-        status:'active'
+        status: 'active',
+        svgUrl:'/icons.2d421eb7.svg#icon-buy'
     },
     {
         id: 'id-2',
@@ -15,7 +16,8 @@ export const data = [
         category: 'Task',
         content: 'The evolution is kfjfjfj fjfjjjf fjjfjfjf',
         dates: '3/5/2022,10/5/2022',
-        status:'active'
+        status: 'active',
+        svgUrl: '/icons.2d421eb7.svg#icon-buy'
     },
       {
         id: 'id-3',
@@ -24,7 +26,8 @@ export const data = [
         category: 'Idea',
         content: 'Implement new...',
         dates: '3/5/2022,10/5/2022',
-        status:'active'
+        status: 'active',
+        svgUrl: '/icons.2d421eb7.svg#icon-lamp'
     },
        {
         id: 'id-4',
@@ -33,7 +36,8 @@ export const data = [
         category: 'Task',
         content: 'Implement new...',
         dates: '',
-        status:'archived'
+        status: 'archived',
+        svgUrl: '/icons.2d421eb7.svg#icon-buy'
     },
         {
         id: 'id-5',
@@ -42,7 +46,8 @@ export const data = [
         category: 'Idea',
         content: 'Implement new...',
         dates: '10/5/2022',
-        status:'archived'
+        status: 'archived',
+        svgUrl: '/icons.2d421eb7.svg#icon-lamp'
     },
          {
         id: 'id-6',
@@ -51,6 +56,7 @@ export const data = [
         category: 'Idea',
         content: 'Implement new...',
         dates: '3/5/2022,10/5/2022',
-        status:'archived'
+        status: 'archived',
+        svgUrl: '/icons.2d421eb7.svg#icon-lamp'
     }
 ]

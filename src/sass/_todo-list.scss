@@ -1,7 +1,7 @@
 .header-wrapper {
     display: flex;
     margin-bottom: 20px;
-    padding-left: 25px;
+    padding-left: 48px;
 
     font-size: 14px;
     font-weight:700;
@@ -15,11 +15,11 @@
 
 .header-info {
     display: block;
-    width: 140px;
+    width: 138px;
 }
 
 .header-info__name {
-    width: 178px;
+    width: 168px;
 }
 
 .todo-form {
@@ -82,7 +82,7 @@
 
 .todo-wrapper {
     display: flex;
-    padding-left: 25px;
+    padding-left: 10px;
     padding-right: 25px;
 
     background-color: rgb(241, 241, 252);
@@ -164,7 +164,25 @@
         color: rgb(92, 90, 90);
     }
 }
+.todo-icon {
+    box-sizing: border-box;
+    width: 30px;
+    height: 30px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 10px;
+   
+    background-color: rgb(92, 90, 90);
+    border-radius: 50%;
+}
 
+.todo-icon__svg {
+    //display: block;
+    
+    margin-top: 5px;
+    margin-left: 5px;
+    fill: whitesmoke;
+}
 .svg-icon {
     fill: rgb(112, 106, 106);
 }

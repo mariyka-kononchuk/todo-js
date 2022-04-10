@@ -17,7 +17,20 @@ const {
   summary } = refs;
 
 const categoryName = ['Task', 'Idea', 'Random Thought'];
-
+const icons = [
+   {
+      name: 'Task',
+      svgUrl: '/icons.2d421eb7.svg#icon-buy'
+  },
+    {
+      name: 'Idea',
+      svgUrl: '/icons.2d421eb7.svg#icon-lamp'
+  },
+      {
+      name: 'Random Thought',
+      svgUrl: '/icons.2d421eb7.svg#icon-mind'
+    },
+]
 let idTodo = '';
 
 createTodoList(data, 'active');
@@ -72,6 +85,14 @@ function addTodo(e) {
 
   const dates = content.value.match(/\d{2}([\/.-])\d{2}\1\d{4}/g)
  
+  let url = '';
+  for (const icon of icons) {
+    if (category.value === icon.name) {
+      console.log(icon.svgUrl)
+      url = icon.svgUrl;
+    }
+  }
+
   const newTodo = {
     id: uuidv4(),
     date: dateFormat(new Date(), "mmmm dS, yyyy"),
@@ -79,7 +100,8 @@ function addTodo(e) {
     content: content.value.trim(),
     category: category.value,
     dates: dates,
-    status:'active'
+    status: 'active',
+    svgUrl:url
   }
     
   data.push(newTodo);

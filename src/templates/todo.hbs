@@ -1,9 +1,11 @@
 {{#each this}}
     <li class="todo-item" id={{id}}>
-        {{!-- <svg class="todo-icon" width="12" height="12">
-          <use "href=./images/icons.svg#icon-delete"></use>
-        </svg> --}}
         <div class="todo-wrapper" >
+            <div class="todo-icon" >
+                <svg class="todo-icon__svg" width="18" height="18">
+                    <use href={{svgUrl}}></use>
+                </svg>
+            </div>
             <p class="todo-info todo-info__font">{{name}}</p>
             <p class="todo-info">{{date}}</p>
             <p class="todo-info">{{category}}</p>
