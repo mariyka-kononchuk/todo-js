@@ -1,3 +1,4 @@
+import sprite from '../images/icons.svg'
 export const data = [
     {
         id: 'id-1',
@@ -7,7 +8,7 @@ export const data = [
         content: 'Tomatoes, bread',
         dates: '3/5/2022',
         status: 'active',
-        svgUrl:'/icons.2d421eb7.svg#icon-buy'
+        svgUrl:`${sprite}#icon-buy`
     },
     {
         id: 'id-2',
@@ -17,7 +18,7 @@ export const data = [
         content: 'The evolution is kfjfjfj fjfjjjf fjjfjfjf',
         dates: '3/5/2022,10/5/2022',
         status: 'active',
-        svgUrl: '/icons.2d421eb7.svg#icon-buy'
+        svgUrl: `${sprite}#icon-buy`
     },
       {
         id: 'id-3',
@@ -27,7 +28,7 @@ export const data = [
         content: 'Implement new...',
         dates: '3/5/2022,10/5/2022',
         status: 'active',
-        svgUrl: '/icons.2d421eb7.svg#icon-lamp'
+        svgUrl: `${sprite}#icon-lamp`
     },
        {
         id: 'id-4',
@@ -37,7 +38,7 @@ export const data = [
         content: 'Implement new...',
         dates: '',
         status: 'archived',
-        svgUrl: '/icons.2d421eb7.svg#icon-buy'
+        svgUrl: `${sprite}#icon-buy`
     },
         {
         id: 'id-5',
@@ -47,7 +48,7 @@ export const data = [
         content: 'Implement new...',
         dates: '10/5/2022',
         status: 'archived',
-        svgUrl: '/icons.2d421eb7.svg#icon-lamp'
+        svgUrl: `${sprite}#icon-lamp`
     },
          {
         id: 'id-6',
@@ -57,6 +58,6 @@ export const data = [
         content: 'Implement new...',
         dates: '3/5/2022,10/5/2022',
         status: 'archived',
-        svgUrl: '/icons.2d421eb7.svg#icon-lamp'
+        svgUrl: `${sprite}#icon-lamp`
     }
 ]

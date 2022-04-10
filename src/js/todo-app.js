@@ -8,6 +8,8 @@ import refs from "./refs.js";
 import { data } from "./data.js";
 import { onEditModalOpen } from './edit-modal';
 
+import sprite from '../images/icons.svg'
+
 const {
   todoList,
   archiveList,
@@ -20,15 +22,15 @@ const categoryName = ['Task', 'Idea', 'Random Thought'];
 const icons = [
    {
       name: 'Task',
-      svgUrl: 'assets/edit.svg'
+      svgUrl: `${sprite}#icon-buy`
   },
     {
       name: 'Idea',
-      svgUrl: '/icons.svg#icon-lamp'
+      svgUrl: `${sprite}#icon-lamp`
   },
       {
       name: 'Random Thought',
-      svgUrl: '/icons.svg#icon-mind'
+      svgUrl: `${sprite}#icon-mind`
     },
 ]
 let idTodo = '';
