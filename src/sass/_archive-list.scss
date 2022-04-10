@@ -123,12 +123,13 @@
     overflow: visible;
     width: 145px;
 }
-
-.archive-btn__unpack {
-    display: inline-block;
+.archive-button__wrapper {
     margin-top: auto;
     margin-bottom: auto;
     margin-left: auto;
+}
+.archive-btn__unpack {
+    display: inline-block;
     
     text-align: center;
     width: 80px;

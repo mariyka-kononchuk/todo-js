@@ -23,8 +23,52 @@
 }
 
 .todo-form {
+    display: flex;
     padding-top: 20px;
-    color: rgb(165, 163, 163)
+    color: rgb(165, 163, 163);
+
+    font-size: 14px;
+    font-weight:500;
+    line-height: 1.167;
+    letter-spacing: 0.06em;
+}
+.todo-input {
+    margin-right: 10px;
+    border-radius: 5px;
+    width: 200px;
+    height: 25px;
+    border: 1px solid rgb(165, 163, 163);
+
+    &:focus {
+        outline: none;
+        border: 2px solid rgb(92, 90, 90);
+        
+    }
+}
+.todo-select {
+    margin-right: 10px;
+    height: 25px;
+    border-radius: 5px;
+    border: 1px solid rgb(165, 163, 163);
+
+    &:focus {
+        outline: none;
+        border: 2px solid rgb(92, 90, 90);
+    
+    }
+}
+
+.todo-textarea{
+    margin-right: 10px;
+    border-radius: 5px;
+    width: 300px;
+    border: 1px solid rgb(165, 163, 163);
+
+    &:focus {
+        outline: none;
+        border: 2px solid rgb(92, 90, 90);
+
+    }
 }
 
 .todo-list {
@@ -88,10 +132,10 @@
 .add-todo-btn {
     display: block;
     margin-left: auto;
-    cursor: pointer;
+    
     text-align: center;
-    width: 110px;
-    height: 28px;
+    width: 100px;
+    height: 24px;
     background-color: white;
     color: rgb(92, 90, 90);
     
@@ -99,10 +143,12 @@
     text-decoration: none;
     font-weight: 600;
     font-size: 12px;
-    line-height: 1.333;
+    line-height: 1.117;
     
     border-radius: 5px;
-    border: 2px solid rgb(165, 163, 163);
+    border: 1px solid rgb(165, 163, 163);
+
+    cursor: pointer;
     
     &:hover {
         background-color: rgb(165, 163, 163);
