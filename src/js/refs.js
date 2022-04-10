@@ -9,5 +9,5 @@ export default {
     addTodoSubmitButton: document.getElementById('add-todo-submit'),
     archiveButton: document.getElementById('archive'),
     deleteAllButton: document.getElementById('delete-all'),
-    saveChangesButton: document.querySelector('.save-changes-btn'),
+    saveChangesButton: document.querySelector('.save-changes-btn')
 };

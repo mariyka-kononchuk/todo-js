@@ -7,7 +7,14 @@ import archiveTpl from '../templates/archive.hbs';
 import refs from "./refs.js";
 import { data } from "./data.js";
 import { onEditModalOpen } from './edit-modal';
-const { todoList, archiveList, todoForm, editForm, deleteAllButton, summary } = refs;
+
+const {
+  todoList,
+  archiveList,
+  todoForm,
+  editForm,
+  deleteAllButton,
+  summary } = refs;
 
 const categoryName = ['Task', 'Idea', 'Random Thought'];
 
@@ -60,9 +67,9 @@ function addTodo(e) {
   } = e.currentTarget;
 
   if (name.value === "" || content.value === "") {
-    return console.log("Please fill in all the fields!");
-    }
-    
+    return Notiflix.Notify.failure('Please fill in all the fields!')
+  }
+
   const dates = content.value.match(/\d{2}([\/.-])\d{2}\1\d{4}/g)
  
   const newTodo = {
