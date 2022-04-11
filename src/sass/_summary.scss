@@ -14,7 +14,15 @@
 }
 .summary-header__wrapper {
     display: flex;
-    margin-left: 200px;
+    margin-left: 100px;
+
+    @media screen and (min-width: 768px) {
+        margin-left: 185px;
+    }
+    
+    @media screen and (min-width: 1024px) {
+        margin-left: 200px;
+    }
 }
 
 .summary-header {
