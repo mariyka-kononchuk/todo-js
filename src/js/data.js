@@ -65,7 +65,7 @@ export const data = [
         name: 'Children school',
         date: 'April 05,2022',
         category: 'Task',
-        content: 'Pay for seconde semester',
+        content: 'Pay for second semester',
         dates: '',
         status: 'active',
         svgUrl: `${sprite}#icon-buy`
