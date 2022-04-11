@@ -63,4 +63,4 @@ module.exports="/hometask-1/icons.1a0d3c0c.svg";
 },{"./refs.js":"VyiV","./todo-app":"R7Cj","./data.js":"QHdL"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/todo-app"),require("./js/edit-modal"),require("./js/todo-modal"),require("./js/archive-modal");
 },{"./sass/main.scss":"clu1","./js/todo-app":"R7Cj","./js/edit-modal":"DIaI","./js/todo-modal":"ef8V","./js/archive-modal":"Ewgx"}]},{},["Focm"], null)
-//# sourceMappingURL=/hometask-1/src.f330ae10.js.map
+//# sourceMappingURL=/hometask-1/src.5c57f38b.js.map
