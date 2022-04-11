@@ -43,10 +43,10 @@ export const data = [
         {
         id: 'id-5',
         name: 'Trip to Mexico',
-        date: 'June 08,2022',
+        date: 'April 08,2022',
         category: 'Idea',
         content: 'Contact tripadvisor',
-        dates: '',
+        dates: '10/06/2022',
         status: 'active',
         svgUrl: `${sprite}#icon-lamp`
     },
