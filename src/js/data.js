@@ -6,7 +6,7 @@ export const data = [
         date: 'April 05,2022',
         category: 'Task',
         content: 'Tomatoes, bread',
-        dates: '3/5/2022',
+        dates: '',
         status: 'active',
         svgUrl:`${sprite}#icon-buy`
     },
@@ -25,8 +25,8 @@ export const data = [
         name: 'New feature',
         date: 'April 05,2022',
         category: 'Idea',
-        content: 'Implement a new process at work',
-        dates: '3/5/2022,10/5/2022',
+        content: 'Implement a new process at work, deadline - 10/5/2022',
+        dates: '10/5/2022',
         status: 'active',
         svgUrl: `${sprite}#icon-lamp`
     },
@@ -45,7 +45,7 @@ export const data = [
         name: 'Trip to Mexico',
         date: 'April 08,2022',
         category: 'Idea',
-        content: 'Contact tripadvisor',
+        content: 'Contact tripadvisor 10/06/2022',
         dates: '10/06/2022',
         status: 'active',
         svgUrl: `${sprite}#icon-lamp`
