@@ -1,7 +1,7 @@
 .header-wrapper {
     display: flex;
     margin-bottom: 20px;
-    padding-left: 48px;
+    padding-left: 18px;
 
     font-size: 14px;
     font-weight:700;
@@ -11,15 +11,39 @@
     background-color: rgb(165, 163, 163);
     color:white;
     border-radius: 6px;
+
+    @media screen and (min-width: 768px) {
+        padding-left: 45px;
+    }
+    
+    @media screen and (min-width: 1024px) {
+        padding-left: 48px;
+    }
 }
 
 .header-info {
     display: block;
-    width: 147px;
+    width: 50px;
+
+    @media screen and (min-width: 768px) {
+        width: 82px;
+    }
+    
+    @media screen and (min-width: 1024px) {
+        width: 147px;
+    }
 }
 
 .header-info__name {
-    width: 178px;
+    width: 100px;
+
+    @media screen and (min-width: 768px) {
+        width: 116px;
+    }
+    
+    @media screen and (min-width: 1024px) {
+        width: 178px;
+    }
 }
 
 .todo-form {
@@ -186,6 +210,14 @@
     border-radius: 5px;
     border: 1px solid rgb(165, 163, 163);
 
+    @media screen and (min-width: 768px) {
+        width: 120px;
+    }
+    
+    @media screen and (min-width: 1024px) {
+        width: 100px;
+    }
+
     cursor: pointer;
     
     &:hover {
@@ -255,5 +287,13 @@
 
 .header-icon {
     display: flex;
-    margin-left: 74px;
+    margin-left: 20px;
+
+    @media screen and (min-width: 768px) {
+        margin-left: 103px;
+    }
+    
+    @media screen and (min-width: 1024px) {
+        margin-left: 74px;
+    }
 }
