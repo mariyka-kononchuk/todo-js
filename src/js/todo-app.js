@@ -88,8 +88,11 @@ function addTodo(e) {
     return Notiflix.Notify.failure('Please fill in all fields')
   }
 
-  const dates = content.value.match(/\d{2}([\/.-])\d{2}\1\d{4}/g)
- 
+  const dates = content.value.match(/\d{1,2}\D\d{1,2}\D(\d{4}|\d{2})/g);
+  
+  let contentDates = []
+  dates.map(item => contentDates.push(dateFormat(item, "m/d/yyyy")))
+  
   let url = '';
   for (const icon of icons) {
     if (category.value === icon.name) {
@@ -103,7 +106,7 @@ function addTodo(e) {
     name: name.value.trim(),
     content: content.value.trim(),
     category: category.value,
-    dates: dates,
+    dates: contentDates.join(', '),
     status: 'active',
     svgUrl:url
   }
