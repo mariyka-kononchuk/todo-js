@@ -30,6 +30,7 @@
     "@parcel/config-default": "^2.8.2",
     "@parcel/transformer-raw": "^2.8.2",
     "@parcel/transformer-sass": "^2.8.2",
+    "parcel-transformer-hbs": "^1.0.4",
     "dateformat": "^5.0.3",
     "deasync": "^0.1.28",
     "notiflix": "^3.2.5",
