@@ -33,14 +33,11 @@
     "dateformat": "^5.0.3",
     "deasync": "^0.1.28",
     "notiflix": "^3.2.5",
-    "uuid": "^8.3.2"
+    "uuid": "^9.0.0"
   },
   "targets": {
     "default": {
       "includeNodeModules": true
     }
-  },
-  "engines": {
-    "node": "10"
   }
 }
