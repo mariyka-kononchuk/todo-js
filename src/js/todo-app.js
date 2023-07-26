@@ -91,7 +91,11 @@ function addTodo(e) {
   const dates = content.value.match(/\d{1,2}\D\d{1,2}\D(\d{4}|\d{2})/g);
   
   let contentDates = []
-  dates.map(item => contentDates.push(dateFormat(item, "m/d/yyyy")))
+
+  if (dates !== null) {
+    dates.map(item => contentDates.push(dateFormat(item, "m/d/yyyy")))
+  } 
+
   
   let url = '';
   for (const icon of icons) {
